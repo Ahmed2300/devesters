@@ -30,7 +30,7 @@ export default function BentoCard({ project }: { project: IBentoProject }) {
         <div className="flex justify-between items-start mb-4">
           <div className="flex items-center gap-3">
             {project.iconUrl && (
-              <Image src={project.iconUrl} alt={`${project.title} icon`} width={32} height={32} className="rounded-md object-contain" />
+              <Image src={project.iconUrl} alt={`${project.title} icon`} width={32} height={32} className="rounded-md object-contain" referrerPolicy="no-referrer" />
             )}
             <h3 className="text-2xl font-heading font-bold text-white">{project.title}</h3>
           </div>
@@ -59,6 +59,7 @@ export default function BentoCard({ project }: { project: IBentoProject }) {
               fill
               className="object-cover opacity-80 group-hover:opacity-100 transition-opacity"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              referrerPolicy="no-referrer"
             />
           </div>
         )}
