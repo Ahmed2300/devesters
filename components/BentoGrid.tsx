@@ -10,8 +10,8 @@ const projects: IBentoProject[] = [
     description: 'A comprehensive LMS platform with complex architecture and integrated payments. Designed for enterprise-level scaling.',
     techStack: ['React.ts', 'Flutter', 'Dart', 'PHP', 'Laravel'],
     gridSpan: 'col-span-1 lg:col-span-2',
-    imageUrl: '/soubul-welcome-page.png',
-    iconUrl: '/soubul-red.png',
+    imageUrl: 'https://i.ibb.co/HDSFW2pc/Soubul-welocome-page.png',
+    iconUrl: 'https://i.ibb.co/Hf5bYZns/subol-red.png',
     actionLink: 'https://www.soubul.net/',
   },
   {

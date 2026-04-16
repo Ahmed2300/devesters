@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   title: 'Devesters Portfolio',
   description: 'We Build the Products That Define Tomorrow.',
   icons: {
-    icon: '/devesters_icon.png',
+    icon: 'https://i.ibb.co/Hf5bYZns/subol-red.png',
   },
 };
 

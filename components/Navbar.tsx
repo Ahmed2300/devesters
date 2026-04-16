@@ -10,6 +10,8 @@ const navLinks = [
   { name: 'Services', href: '/services' },
   { name: 'Process', href: '/process' },
   { name: 'About', href: '/about' },
+  { name: 'Projects', href: '/projects' },
+  { name: 'Apply for Project', href: '/apply' },
 ];
 
 export default function Navbar() {
