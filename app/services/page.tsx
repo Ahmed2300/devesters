@@ -11,10 +11,9 @@ import {
   SiOpenai, 
   SiLaravel, 
   SiSupabase,
-  SiAmazonaws,
   SiTailwindcss
 } from 'react-icons/si';
-import { FaCode, FaBrain, FaDatabase } from 'react-icons/fa';
+import { FaCode, FaBrain, FaDatabase, FaAws } from 'react-icons/fa';
 
 const techIcons: Record<string, React.ElementType> = {
   'Next.js': SiNextdotjs,
@@ -30,7 +29,7 @@ const techIcons: Record<string, React.ElementType> = {
   'RAG': FaDatabase,
   'Laravel': SiLaravel,
   'Supabase': SiSupabase,
-  'AWS': SiAmazonaws,
+  'AWS': FaAws,
   'Tailwind': SiTailwindcss,
   'React.js': SiNextdotjs, // Using Next.js icon for React.js as well or SiReact if I import it
 };
