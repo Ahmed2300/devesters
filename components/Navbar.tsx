@@ -21,7 +21,7 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#050509]/80 backdrop-blur-lg border-b border-white/5">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-0">
-          <Image src="/devesters_icon.png" alt="Devesters Logo" width={24} height={24} className="rounded-sm" referrerPolicy="no-referrer" />
+          <Image src="https://i.ibb.co/3Y0bCFgM/devesters-icon.png" alt="Devesters Logo" width={24} height={24} className="rounded-sm" referrerPolicy="no-referrer" />
           <span className="text-xl font-heading font-bold tracking-tight text-white -ml-0.5">EVesters</span>
         </Link>
 
