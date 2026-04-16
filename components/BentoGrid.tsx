@@ -40,7 +40,7 @@ export default function BentoGrid() {
   return (
     <section className="relative max-w-7xl mx-auto px-6 py-20">
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-studio-red/20 rounded-full blur-[120px] -z-10 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-studio-red/20 rounded-full blur-[80px] md:blur-[120px] -z-10 pointer-events-none" />
       
       <h2 className="text-3xl font-heading font-bold text-white mb-10 tracking-tight uppercase">Selected Work</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(250px,auto)]">

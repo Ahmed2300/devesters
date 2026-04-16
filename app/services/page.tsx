@@ -51,8 +51,8 @@ export default function ServicesPage() {
       <section className="mb-24">
         <div className="max-w-3xl">
           <p className="text-studio-red font-bold tracking-wider text-sm uppercase mb-4">What We Do</p>
-          <h1 className="text-5xl md:text-6xl font-mono font-bold tracking-tighter leading-tight text-white mb-6">
-            End-to-End Engineering,<br />From Idea to Deployment.
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-mono font-bold tracking-tighter leading-tight text-white mb-6">
+            End-to-End Engineering,<br className="hidden sm:block" />From Idea to Deployment.
           </h1>
           <p className="text-lg text-[#d4d4d8] leading-relaxed">
             We don&apos;t hand off. We architect, build, and ship complete digital products. Precision engineering for teams that demand performance.
@@ -164,7 +164,7 @@ export default function ServicesPage() {
       <section className="relative py-24 rounded-3xl overflow-hidden border border-white/5">
         <div className="absolute inset-0 bg-gradient-to-t from-red-950/40 to-transparent -z-10" />
         <div className="flex flex-col items-center text-center px-6">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6">Ready to Build?</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white mb-6">Ready to Build?</h2>
           <p className="text-lg text-[#d4d4d8] mb-10 max-w-2xl">
             Tell us what you&apos;re making. We&apos;ll tell you how we&apos;d build it.
           </p>

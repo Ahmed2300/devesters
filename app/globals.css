@@ -12,6 +12,7 @@
 body {
   background-color: var(--color-background);
   color: #ffffff;
+  overflow-x: hidden;
 }
 
 @layer utilities {

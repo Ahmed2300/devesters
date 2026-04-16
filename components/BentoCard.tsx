@@ -27,14 +27,14 @@ export default function BentoCard({ project }: { project: IBentoProject }) {
       
       {/* Content */}
       <div className="relative z-10 flex flex-col h-full">
-        <div className="flex justify-between items-start mb-4">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-3 sm:gap-0">
           <div className="flex items-center gap-3">
             {project.iconUrl && (
               <Image src={project.iconUrl} alt={`${project.title} icon`} width={32} height={32} className="rounded-md object-contain" referrerPolicy="no-referrer" />
             )}
             <h3 className="text-2xl font-heading font-bold text-white">{project.title}</h3>
           </div>
-          <span className="px-3 py-1 text-[10px] font-bold tracking-wider text-soft-aqua uppercase border border-soft-aqua/20 rounded-full bg-soft-aqua/5">
+          <span className="px-3 py-1 text-[10px] font-bold tracking-wider text-soft-aqua uppercase border border-soft-aqua/20 rounded-full bg-soft-aqua/5 whitespace-nowrap">
             {project.tag}
           </span>
         </div>

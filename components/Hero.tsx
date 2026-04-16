@@ -85,10 +85,10 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-[1.75rem] sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tight text-white mb-6 leading-tight flex flex-col items-center"
+          className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tight text-white mb-6 leading-tight flex flex-col items-center"
         >
-          <span className="whitespace-nowrap">We Build the Products</span>
-          <span className="whitespace-nowrap">
+          <span className="whitespace-normal sm:whitespace-nowrap text-center">We Build the Products</span>
+          <span className="whitespace-normal sm:whitespace-nowrap text-center">
             That{' '}
             <span className="text-studio-red italic font-mono">{highlightWord}</span>
             {hasSpace ? ' ' : ''}
