@@ -12,7 +12,7 @@ export default function Footer() {
             <span className="text-xl font-heading font-bold tracking-tight text-white -ml-0.5">EVesters</span>
           </Link>
           <p className="text-xs text-[#d4d4d8]/60 max-w-xs uppercase tracking-wider leading-relaxed">
-            © 2024 DEVESTERS STUDIO. ENGINEERED FOR PERFORMANCE.
+            © 2026 DEVESTERS STUDIO. ENGINEERED FOR PERFORMANCE.
           </p>
         </div>
 
@@ -22,7 +22,6 @@ export default function Footer() {
             <li><Link href="/" className="text-sm text-[#d4d4d8] hover:text-white transition-colors uppercase tracking-wider text-[10px] font-bold">Work</Link></li>
             <li><Link href="/services" className="text-sm text-[#d4d4d8] hover:text-white transition-colors uppercase tracking-wider text-[10px] font-bold">Services</Link></li>
             <li><Link href="/process" className="text-sm text-[#d4d4d8] hover:text-white transition-colors uppercase tracking-wider text-[10px] font-bold">Process</Link></li>
-            <li><Link href="/privacy" className="text-sm text-[#d4d4d8] hover:text-white transition-colors uppercase tracking-wider text-[10px] font-bold">Privacy Policy</Link></li>
           </ul>
         </div>
 
@@ -32,7 +31,7 @@ export default function Footer() {
             <a href="#" className="text-[#d4d4d8] hover:text-white transition-colors">
               <FiGithub className="w-5 h-5" />
             </a>
-            <a href="#" className="text-[#d4d4d8] hover:text-white transition-colors">
+            <a href="https://www.linkedin.com/company/113089086/" target="_blank" rel="noopener noreferrer" className="text-[#d4d4d8] hover:text-white transition-colors">
               <FiLinkedin className="w-5 h-5" />
             </a>
             <a href="#" className="text-[#d4d4d8] hover:text-white transition-colors">

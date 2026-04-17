@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import { Inter, Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
 import './globals.css'; // Global styles
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import SmoothScrolling from '@/components/SmoothScrolling';
 import ParticleBackground from '@/components/ParticleBackground';
 
@@ -36,6 +37,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         <SmoothScrolling>
           <Navbar />
           {children}
+          <Footer />
         </SmoothScrolling>
       </body>
     </html>

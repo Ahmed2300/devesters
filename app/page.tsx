@@ -1,7 +1,7 @@
 import Hero from '@/components/Hero';
 import BentoGrid from '@/components/BentoGrid';
 import Capabilities from '@/components/Capabilities';
-import Footer from '@/components/Footer';
+import Testimonials from '@/components/Testimonials';
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
       <Hero />
       <BentoGrid />
       <Capabilities />
-      <Footer />
+      <Testimonials />
     </main>
   );
 }

@@ -1,5 +1,8 @@
 import type {NextConfig} from 'next';
 
+// Bypass TLS verification for remote image optimization failures with external hosts
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   eslint: {
@@ -8,7 +11,6 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
-  // Allow access to remote image placeholder.
   images: {
     remotePatterns: [
       {
@@ -20,6 +22,24 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'i.ibb.co',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'iili.io',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.soubul.net',
         port: '',
         pathname: '/**',
       },
