@@ -9,7 +9,12 @@ import {
   Users, 
   TrendingUp, 
   Cpu, 
-  Code 
+  Code,
+  Github,
+  Linkedin,
+  Instagram,
+  Mail,
+  Globe
 } from 'lucide-react';
 
 const TEAM_MEMBERS = [
@@ -19,7 +24,14 @@ const TEAM_MEMBERS = [
     "bio": "Ahmed is the mastermind behind the architectural vision at Devesters. As the Team Lead and a senior Frontend/Mobile engineer, he seamlessly blends technical strategy with flawless execution. He specializes in transforming complex requirements into comprehensive, scalable SaaS platforms and high-performance applications. With deep expertise spanning cross-platform mobile development (Flutter) to modern web ecosystems (React, Next.js), his obsession with detail and AI integration makes him the cornerstone of our engineering delivery.",
     "skills": ["Flutter", "Dart", "React", "Next.js", "TypeScript", "Tailwind", "AI Tools"],
     "profile_url": "/team/ahmed-azam",
-    "photo_url": "https://i.ibb.co/bMpK8X8Y/Ahmed.png"
+    "photo_url": "https://i.ibb.co/bMpK8X8Y/Ahmed.png",
+    "social_media": {
+      "github": "https://github.com/Ahmed2300",
+      "linkedin": "https://www.linkedin.com/in/ahmed-azam-320a98200",
+      "instagram": "https://www.instagram.com/ahmed_a_azam/",
+      "email": "mailto:ahmed750@std.mans.edu.eg",
+      "portfolio": "https://ahmedazamportfolio.netlify.app/"
+    }
   },
   {
     "name": "Manar Elnahty",
@@ -27,7 +39,13 @@ const TEAM_MEMBERS = [
     "bio": "Manar is a passionate and creative software engineer dedicated to crafting seamless digital experiences across multiple platforms. Backed by rigorous training at the Information Technology Institute (ITI), she possesses a unique hybrid skill set—bridging natively compiled mobile apps via Flutter with advanced frontend web architectures. Her ability to write clean, highly scalable code using modern stacks like React and TypeScript ensures that every interface Devesters ships is responsive, fast, and enterprise-ready.",
     "skills": ["Flutter", "Dart", "React", "Next.js", "TypeScript", "Tailwind", "AI Tools"],
     "profile_url": "/team/manar-elnahty",
-    "photo_url": "https://i.ibb.co/spP6fmwN/manar.jpg"
+    "photo_url": "https://i.ibb.co/spP6fmwN/manar.jpg",
+    "social_media": {
+      "github": "https://github.com/manarelnahty",
+      "linkedin": "https://www.linkedin.com/in/manar-e-6b21bb230",
+      "instagram": "https://www.instagram.com/manar_elnahty?igsh=M2VxdXRnaDRtMTRm&utm_source=qr",
+      "email": "mailto:manarelnahty@gmail.com"
+    }
   },
   {
     "name": "Mohamed Badr",
@@ -35,7 +53,13 @@ const TEAM_MEMBERS = [
     "bio": "Mohamed is the code artist of the team, intensely focused on mobile application architecture and user experience. Leveraging his specialized ITI background and deep understanding of UI/UX principles, he brings an elite level of polish to every interface he builds. He is dedicated to translating intricate design systems into high-performance Flutter applications, ensuring that every micro-interaction and 60fps animation feels fluid and native across both iOS and Android platforms.",
     "skills": ["Flutter", "Dart", "React", "JavaScript", "TypeScript", "UI/UX", "AI Tools"],
     "profile_url": "/team/mohamed-badr",
-    "photo_url": "https://iili.io/KWL2vG1.jpg"
+    "photo_url": "https://iili.io/KWL2vG1.jpg",
+    "social_media": {
+      "github": "https://github.com/mohmdadl",
+      "linkedin": "https://www.linkedin.com/in/mhmdbadr4flutter/",
+      "instagram": "https://www.instagram.com/mohmd_adl/",
+      "email": "mailto:mohamedbadr4iti@gmail.com"
+    }
   },
   {
     "name": "Ahmed Farghly",
@@ -43,7 +67,12 @@ const TEAM_MEMBERS = [
     "bio": "Ahmed Farghly is the driving force behind Devesters' robust infrastructure. He brings exceptional expertise to architecting large-scale backend systems using enterprise-grade frameworks like Laravel and Django. Ahmed's capabilities extend far beyond writing code; he is deeply involved in server administration, database design, and DevOps pipelines. His meticulous approach ensures that the servers and platforms we build remain highly available, secure, and performant under extreme load.",
     "skills": ["Laravel", "Django", "Backend", "API", "Golang", "Server Administrator", "DevOps", "AI Tools"],
     "profile_url": "/team/ahmed-farghly",
-    "photo_url": "https://avatars.githubusercontent.com/u/95584009?v=4"
+    "photo_url": "https://avatars.githubusercontent.com/u/95584009?v=4",
+    "social_media": {
+      "github": "https://github.com/Ahmedfargh",
+      "linkedin": "https://www.linkedin.com/in/ahmed-farghly-879b09257",
+      "email": "mailto:ahmedgits2001@gmail.com"
+    }
   },
   {
     "name": "Ahmed Essam",
@@ -51,7 +80,12 @@ const TEAM_MEMBERS = [
     "bio": "Ahmed Essam is the engineer of logic, security, and performance behind the scenes. Specializing in complex database architecture and API development using PHP and Laravel, he focuses relentlessly on writing clean, testable, and highly maintainable backend code. His technical contributions are critical to ensuring secure, lightning-fast data flow between complex databases and frontend clients, providing the stable foundation required for our most advanced digital products.",
     "skills": ["PHP", "Laravel", "Backend Development", "ASP.NET", "AI Tools"],
     "profile_url": "/team/ahmed-essam",
-    "photo_url": "https://i.ibb.co/Hf5bYZns/subol-red.png"
+    "photo_url": "https://i.ibb.co/Hf5bYZns/subol-red.png",
+    "social_media": {
+      "github": "https://github.com/AhmedEssam88",
+      "linkedin": "https://www.linkedin.com/in/ahmed-essam-465208232",
+      "email": "mailto:ahmedessam1.8.14@gmail.com"
+    }
   }
 ];
 
@@ -136,12 +170,41 @@ export default function AboutPage() {
                 {member.bio}
               </p>
               
-              <div className="flex flex-wrap gap-2 mt-auto">
+              <div className="flex flex-wrap gap-2 mt-auto pt-6">
                 {member.skills.map((skill) => (
                   <span key={skill} className="px-3 py-1 text-[10px] font-medium tracking-wider text-studio-red border border-studio-red/20 rounded-md bg-studio-red/5">
                     {skill}
                   </span>
                 ))}
+              </div>
+
+              {/* Social Links */}
+              <div className="flex flex-wrap gap-3 mt-6 pt-6 border-t border-white/5">
+                {member.social_media.github && (
+                  <a href={member.social_media.github} target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors" title="GitHub">
+                    <Github className="w-4 h-4" />
+                  </a>
+                )}
+                {member.social_media.linkedin && (
+                  <a href={member.social_media.linkedin} target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors" title="LinkedIn">
+                    <Linkedin className="w-4 h-4" />
+                  </a>
+                )}
+                {member.social_media.instagram && (
+                  <a href={member.social_media.instagram} target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors" title="Instagram">
+                    <Instagram className="w-4 h-4" />
+                  </a>
+                )}
+                {member.social_media.portfolio && (
+                  <a href={member.social_media.portfolio} target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors" title="Portfolio">
+                    <Globe className="w-4 h-4" />
+                  </a>
+                )}
+                {member.social_media.email && (
+                  <a href={member.social_media.email} className="text-zinc-400 hover:text-white transition-colors" title="Email">
+                    <Mail className="w-4 h-4" />
+                  </a>
+                )}
               </div>
             </div>
           ))}
