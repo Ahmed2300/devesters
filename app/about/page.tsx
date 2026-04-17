@@ -94,14 +94,14 @@ export default function AboutPage() {
     <main className="min-h-screen pt-32 pb-20">
       {/* Hero Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24 md:mb-32 mt-12">
-        <p className="text-studio-red font-bold tracking-widest text-xs uppercase mb-6">
+        <p className="text-[#ffab91] font-bold tracking-widest text-xs uppercase mb-6">
           The Squad
         </p>
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-heading font-bold tracking-tight text-white mb-8 leading-[1.1]">
+        <h1 className="text-4xl sm:text-6xl md:text-7xl font-heading font-bold tracking-tight text-[#d4d4d8] mb-8 leading-[1.1]">
           Built by Engineers<br />
-          Who <span className="text-studio-red">Ship.</span>
+          Who <span className="text-[#ffab91]">Ship.</span>
         </h1>
-        <p className="text-lg md:text-xl text-[#d4d4d8] leading-relaxed max-w-2xl">
+        <p className="text-lg md:text-xl text-[#a1a1aa] leading-relaxed max-w-2xl">
           We are a premium software engineering collective — not a marketplace, not a cheap agency. A focused team of specialists that thinks about your business logic, UX, and architecture at the same time.
         </p>
       </section>
