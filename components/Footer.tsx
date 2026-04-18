@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiTwitter, FiMail } from 'react-icons/fi';
 
 export default function Footer() {
   return (
@@ -28,7 +28,7 @@ export default function Footer() {
         <div>
           <h4 className="text-xs font-bold tracking-widest text-studio-red uppercase mb-6">Social</h4>
           <div className="flex gap-4 mb-10">
-            <a href="#" className="text-[#d4d4d8] hover:text-white transition-colors">
+            <a href="https://github.com/devesters" target="_blank" rel="noopener noreferrer" className="text-[#d4d4d8] hover:text-white transition-colors">
               <FiGithub className="w-5 h-5" />
             </a>
             <a href="https://www.linkedin.com/company/113089086/" target="_blank" rel="noopener noreferrer" className="text-[#d4d4d8] hover:text-white transition-colors">
@@ -36,6 +36,9 @@ export default function Footer() {
             </a>
             <a href="#" className="text-[#d4d4d8] hover:text-white transition-colors">
               <FiTwitter className="w-5 h-5" />
+            </a>
+            <a href="mailto:hello@devesters.com" className="text-[#d4d4d8] hover:text-white transition-colors">
+              <FiMail className="w-5 h-5" />
             </a>
           </div>
           <div className="text-[10px] font-bold tracking-wider text-[#d4d4d8]/60 uppercase leading-relaxed">

@@ -13,7 +13,7 @@ const navLinks = [
   { name: 'Process', href: '/process' },
   { name: 'About', href: '/about' },
   { name: 'Projects', href: '/projects' },
-  { name: 'Apply for Project', href: '/apply' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar() {
@@ -54,9 +54,9 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden lg:block">
-          <button className="px-5 py-2 text-sm font-medium text-white bg-transparent border border-studio-red rounded-full transition-colors hover:bg-studio-red">
+          <Link href="/contact" className="inline-block px-5 py-2 text-sm font-medium text-white bg-transparent border border-studio-red rounded-full transition-colors hover:bg-studio-red cursor-pointer">
             Get in Touch
-          </button>
+          </Link>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -93,9 +93,9 @@ export default function Navbar() {
                   </Link>
                 );
               })}
-              <button className="mt-4 px-5 py-3 text-sm font-medium text-white bg-studio-red rounded-full transition-colors w-full">
+              <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-5 py-3 text-sm font-medium w-full text-center text-white bg-studio-red rounded-full transition-colors block cursor-pointer">
                 Get in Touch
-              </button>
+              </Link>
             </div>
           </motion.div>
         )}
