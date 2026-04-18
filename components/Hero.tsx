@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
+import Link from 'next/link';
 import { SiNextdotjs, SiReact, SiFlutter, SiNodedotjs, SiPython, SiPhp, SiLaravel, SiDart, SiGo } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa';
 
@@ -110,19 +111,21 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
         >
-          <motion.button
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.98 }}
-            className="px-8 py-3.5 text-sm font-medium text-white bg-studio-red rounded-full shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:shadow-[0_0_30px_rgba(220,38,38,0.6)] transition-shadow w-full sm:w-auto"
+          <Link
+            href="/contact"
+            className="inline-block px-8 py-3.5 text-sm font-medium text-center text-white bg-studio-red rounded-full shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:shadow-[0_0_30px_rgba(220,38,38,0.6)] hover:scale-[1.03] active:scale-[0.98] transition-all w-full sm:w-auto"
           >
-            Let&apos;s Build Together
-          </motion.button>
-          <button className="px-8 py-3.5 text-sm font-medium text-white bg-transparent rounded-full border border-white/10 hover:border-white/30 transition-colors w-full sm:w-auto group relative overflow-hidden">
-            <span className="relative z-10">View Our Work</span>
+            Contact Us
+          </Link>
+          <Link 
+            href="/projects" 
+            className="inline-block px-8 py-3.5 text-sm font-medium text-center text-white bg-transparent rounded-full border border-white/10 hover:border-white/30 transition-colors w-full sm:w-auto group relative overflow-hidden"
+          >
+            <span className="relative z-10">Projects</span>
             <span className="absolute bottom-0 left-0 w-full h-[1px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-          </button>
+          </Link>
         </motion.div>
 
         <motion.div

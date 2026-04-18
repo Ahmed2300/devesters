@@ -2,6 +2,7 @@
 
 import { motion } from 'motion/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { FiArrowRight } from 'react-icons/fi';
 
 export interface IBentoProject {
@@ -17,11 +18,19 @@ export interface IBentoProject {
 }
 
 export default function BentoCard({ project }: { project: IBentoProject }) {
+  const isExternal = project.actionLink.startsWith('http');
+  const CardWrapper = isExternal ? 'a' : Link;
+
   return (
-    <motion.div
-      whileHover={{ scale: 1.02 }}
-      className={`bg-glass rounded-2xl p-6 relative overflow-hidden transition-all duration-300 ease-out hover:bg-white/10 hover:border-studio-red/30 group ${project.gridSpan}`}
+    <CardWrapper 
+      href={project.actionLink} 
+      {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      className={`block group ${project.gridSpan}`}
     >
+      <motion.div
+        whileHover={{ scale: 1.02 }}
+        className="bg-glass rounded-2xl p-6 relative overflow-hidden transition-all duration-300 ease-out hover:bg-white/10 hover:border-studio-red/30 h-full w-full"
+      >
       {/* Inner gradient for extra depth */}
       <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
       
@@ -57,20 +66,27 @@ export default function BentoCard({ project }: { project: IBentoProject }) {
               src={project.imageUrl}
               alt={project.title}
               fill
-              className="object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+              className="object-cover opacity-80 group-hover:opacity-100 transition-transform duration-500 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               referrerPolicy="no-referrer"
             />
+            {isExternal && (
+              <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span className="text-[10px] font-bold tracking-widest text-[#FF1C1C] uppercase">Live Preview</span>
+                <span className="text-[#FF1C1C] text-[12px] -translate-y-[1px]">↗</span>
+              </div>
+            )}
           </div>
         )}
 
         {!project.imageUrl && (
-          <div className="mt-auto pt-6 flex items-center text-xs font-bold tracking-widest text-[#d4d4d8] uppercase group-hover:text-white transition-colors cursor-pointer">
-            View Case Study
-            <FiArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+          <div className="mt-auto pt-6 flex items-center text-xs font-bold tracking-widest text-[#d4d4d8] uppercase group-hover:text-[#FF1C1C] transition-colors cursor-pointer">
+            {isExternal ? 'Live Preview' : 'View Case Study'}
+            <FiArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </div>
         )}
       </div>
-    </motion.div>
+      </motion.div>
+    </CardWrapper>
   );
 }

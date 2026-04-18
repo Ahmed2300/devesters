@@ -21,9 +21,9 @@ const projects: IBentoProject[] = [
     description: 'Award-winning AI-powered agricultural ecosystem with advanced LLM integration for precision farming.',
     techStack: ['React.js', 'Tailwind', 'Flutter', 'Dart', 'Node.js', 'Firebase', 'AWS'],
     gridSpan: 'col-span-1 row-span-2',
-    imageUrl: 'https://i.ibb.co/G4HmKHTz/naptah-snapshoot.png',
+    imageUrl: 'https://i.ibb.co/xtGX7VFm/Gemini-Generated-Image-bprpw7bprpw7bprp.png',
     iconUrl: 'https://i.ibb.co/hRLR9Rf5/Nabtah-logo.png',
-    actionLink: '/work/naptah',
+    actionLink: 'https://naptah.netlify.app/',
   },
   {
     id: 'hirewire',

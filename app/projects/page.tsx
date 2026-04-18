@@ -36,6 +36,7 @@ type Project = {
     square: string;
   };
   link: string;
+  previewUrl?: string;
 };
 
 const projectsData: Project[] = [
@@ -54,7 +55,8 @@ const projectsData: Project[] = [
       portrait: 'https://i.ibb.co/mVTk9mFC/Gemini-Generated-Image-ict7k1ict7k1ict7.png',
       square: 'https://i.ibb.co/Ldfp9LpY/Gemini-Generated-Image-xozhl7xozhl7xozh.png'
     },
-    link: '/projects/soubul'
+    link: '/projects/soubul',
+    previewUrl: 'https://www.soubul.net/'
   },
   {
     id: 2,
@@ -71,7 +73,8 @@ const projectsData: Project[] = [
       portrait: 'https://i.ibb.co/xtGX7VFm/Gemini-Generated-Image-bprpw7bprpw7bprp.png',
       square: 'https://i.ibb.co/LDKxt53p/Gemini-Generated-Image-e2upore2upore2up.png'
     },
-    link: '/projects/napta'
+    link: '/projects/napta',
+    previewUrl: 'https://naptah.netlify.app/'
   },
   {
     id: 3,
@@ -277,12 +280,18 @@ export default function ProjectsPage() {
                     </p>
 
                     {/* New Tech Pills */}
-                    <div className="flex flex-wrap gap-2 md:gap-3 mb-10">
+                    <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-10">
                       {project.tech.map((t) => (
                         <span key={t} className="px-4 py-2.5 rounded-[10px] bg-white/[0.04] border border-white/[0.08] text-[11px] md:text-xs font-semibold text-[#a1a1aa] transition-colors hover:text-white hover:border-white/20">
                           {t}
                         </span>
                       ))}
+                      
+                      {project.previewUrl && (
+                         <a href={project.previewUrl} target="_blank" rel="noopener noreferrer" className="ml-auto flex items-center gap-2 px-5 py-2.5 rounded-[10px] bg-[#FF1C1C]/10 border border-[#FF1C1C]/30 text-[#FF1C1C] text-[11px] md:text-xs font-bold hover:bg-[#FF1C1C]/20 transition-colors">
+                           Live Preview <span className="text-[14px]">↗</span>
+                         </a>
+                      )}
                     </div>
 
                     {/* Full Width Hero Graphic */}
@@ -353,7 +362,7 @@ export default function ProjectsPage() {
                         {project.description}
                       </p>
                       
-                      <div className="flex flex-wrap gap-2 mt-2">
+                      <div className="flex flex-wrap items-center gap-2 mt-2 w-full">
                         {project.tech.map((t) => (
                           <span key={t} className="px-2.5 py-1.5 rounded bg-transparent border border-white/10 text-[10px] font-medium tracking-wide text-zinc-400">
                             {t}
@@ -361,9 +370,16 @@ export default function ProjectsPage() {
                         ))}
                       </div>
 
-                      <Link href={project.link} className="inline-flex items-center gap-2 text-sm font-bold text-white mt-4 hover:opacity-80 transition-opacity w-fit">
-                        View Project <span className="transform group-hover:translate-x-1 transition-transform">→</span>
-                      </Link>
+                      <div className="flex items-center gap-4 mt-4">
+                        <Link href={project.link} className="inline-flex items-center gap-2 text-sm font-bold text-white hover:opacity-80 transition-opacity">
+                          View Project <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                        </Link>
+                        {project.previewUrl && (
+                          <a href={project.previewUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-bold text-[#FF1C1C] hover:opacity-80 transition-opacity">
+                            Live Preview <span className="text-[14px] -translate-y-[1px]">↗</span>
+                          </a>
+                        )}
+                      </div>
                     </div>
                   </>
                 )}
