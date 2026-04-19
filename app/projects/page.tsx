@@ -298,29 +298,45 @@ export default function ProjectsPage() {
                     {project.covers ? (
                       <Link href={project.link} className="block mt-auto w-full aspect-[3/4] sm:aspect-square lg:aspect-[21/9] rounded-[16px] overflow-hidden relative group/cover border border-white/5 bg-[#09090b]">
                         {/* Landscape (1024px and up) */}
-                        <img 
+                        <Image 
                           src={project.covers.landscape} 
                           alt={`${project.title} Landscape`} 
-                          className="hidden lg:block absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/cover:scale-[1.03]" 
+                          fill
+                          priority={true}
+                          sizes="(min-width: 1024px) 100vw, 1vw"
+                          className="hidden lg:block object-cover transition-transform duration-700 group-hover/cover:scale-[1.03]" 
                         />
                         {/* Square (640px to 1024px) */}
-                        <img 
+                        <Image 
                           src={project.covers.square} 
                           alt={`${project.title} Square`} 
-                          className="hidden sm:block lg:hidden absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/cover:scale-[1.03]" 
+                          fill
+                          priority={true}
+                          sizes="(min-width: 640px) and (max-width: 1023px) 100vw, 1vw"
+                          className="hidden sm:block lg:hidden object-cover transition-transform duration-700 group-hover/cover:scale-[1.03]" 
                         />
                         {/* Portrait (Less than 640px) */}
-                        <img 
+                        <Image 
                           src={project.covers.portrait} 
                           alt={`${project.title} Portrait`} 
-                          className="block sm:hidden absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/cover:scale-[1.03]" 
+                          fill
+                          priority={true}
+                          sizes="(max-width: 639px) 100vw, 1vw"
+                          className="block sm:hidden object-cover transition-transform duration-700 group-hover/cover:scale-[1.03]" 
                         />
                       </Link>
                     ) : (
                       <Link href={project.link} className="block mt-auto w-full aspect-[21/9] sm:aspect-[24/7] lg:aspect-[32/10] rounded-[16px] overflow-hidden bg-gradient-to-br from-[#d9192c] to-[#990a18] relative group/cover">
                         <div className="absolute inset-0 bg-[#09090b]/10 mix-blend-overlay pointer-events-none" />
                         <div className="absolute inset-0 flex items-center justify-center opacity-80 transition-transform duration-700 group-hover/cover:scale-105">
-                          <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070&auto=format&fit=crop" alt="" className="w-full h-full object-cover mix-blend-luminosity opacity-[0.25]" />
+                          <Image 
+                            src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070&auto=format&fit=crop" 
+                            alt="Fallback Hero" 
+                            fill
+                            sizes="100vw"
+                            priority={true}
+                            className="object-cover mix-blend-luminosity opacity-[0.25]" 
+                          />
                         </div>
                         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center">
                            <div className="text-white text-7xl md:text-9xl font-black italic tracking-tighter" style={{ textShadow: '0 10px 40px rgba(0,0,0,0.4)', fontFamily: 'system-ui' }}>اس</div>
