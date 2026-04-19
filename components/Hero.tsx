@@ -73,19 +73,13 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-studio-red/15 via-transparent to-transparent -z-10" />
 
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+        <div
           className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-wider text-studio-red uppercase border border-studio-red/20 rounded-full bg-studio-red/5"
         >
           Cairo-Based Studio · Est. 2024
-        </motion.div>
+        </div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+        <h1
           className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tight text-white mb-6 leading-tight flex flex-col items-center"
         >
           <span className="whitespace-normal sm:whitespace-nowrap text-center">We Build the Products</span>
@@ -96,21 +90,15 @@ export default function Hero() {
             {restWords}
             <span className="animate-pulse text-studio-red font-mono">|</span>
           </span>
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+        <p
           className="text-lg md:text-xl text-[#d4d4d8] mb-10 max-w-2xl mx-auto"
         >
           Full-stack platforms, SaaS tools, cross-platform mobile apps, and AI integrations — engineered to scale from day one.
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+        <div
           className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
         >
           <Link
@@ -126,7 +114,7 @@ export default function Hero() {
             <span className="relative z-10">Projects</span>
             <span className="absolute bottom-0 left-0 w-full h-[1px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
           </Link>
-        </motion.div>
+        </div>
 
         <motion.div
           initial={{ opacity: 0 }}
