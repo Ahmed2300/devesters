@@ -63,7 +63,6 @@ export default function Navbar() {
         <button 
           className="lg:hidden z-50 p-2 text-white"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle Navigation"
         >
           {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>

@@ -81,7 +81,7 @@ export default function ServicesSection() {
                   We architect and deploy full-scale web platforms using Next.js — from complex SaaS dashboards to enterprise portals with integrated payment systems and authentication.
                 </p>
               </div>
-              <div className="inline-flex w-fit items-center gap-1.5 bg-[#dc2626] text-white px-5 py-3 rounded-lg text-[13px] font-bold transition-all group-hover:opacity-90 group-hover:-translate-y-px mt-auto">
+              <div className="inline-flex w-fit items-center gap-1.5 bg-[#FF1C1C] text-white px-5 py-3 rounded-lg text-[13px] font-medium transition-all group-hover:opacity-90 group-hover:-translate-y-px mt-auto">
                 Explore Service <ArrowRight className="w-4 h-4" />
               </div>
             </div>
@@ -98,7 +98,7 @@ export default function ServicesSection() {
               <div className="relative w-full h-full flex items-center justify-center">
                 {/* Left Phone */}
                 <div className="absolute w-[60px] md:w-[70px] h-[130px] rounded-[12px] bg-[#121214] border border-white/5 right-[55%] transform -rotate-12 translate-y-4 opacity-80 overflow-hidden p-2 flex flex-col gap-2">
-                  <div className="text-[8px] text-zinc-300 font-medium">Weekly</div>
+                  <div className="text-[8px] text-zinc-500">Weekly</div>
                   <div className="text-[10px] text-emerald-400 font-bold">+2.1%</div>
                   <div className="flex-1 flex items-end gap-1">
                     <div className="w-1/4 h-full bg-emerald-500/20 rounded-t-sm relative"><div className="absolute bottom-0 w-full h-[40%] bg-emerald-500/60 rounded-t-sm"></div></div>
@@ -109,7 +109,7 @@ export default function ServicesSection() {
 
                 {/* Right Phone */}
                 <div className="absolute w-[60px] md:w-[70px] h-[130px] rounded-[12px] bg-[#121214] border border-white/5 left-[55%] transform rotate-12 translate-y-4 opacity-80 overflow-hidden p-2 flex flex-col gap-2">
-                  <div className="text-[8px] text-zinc-300 font-medium">Recent</div>
+                  <div className="text-[8px] text-zinc-500">Recent</div>
                   <div className="flex gap-2 items-center bg-white/5 p-1 rounded-sm"><div className="w-3 h-3 rounded-full bg-white/20"></div><div className="h-1 w-full bg-emerald-400/80 rounded"></div></div>
                   <div className="flex gap-2 items-center bg-white/5 p-1 rounded-sm"><div className="w-3 h-3 rounded-full bg-white/20"></div><div className="h-1 w-full bg-emerald-400/60 rounded"></div></div>
                   <div className="flex gap-2 items-center bg-white/5 p-1 rounded-sm"><div className="w-3 h-3 rounded-full bg-white/20"></div><div className="h-1 w-full bg-emerald-400/40 rounded"></div></div>
@@ -139,7 +139,7 @@ export default function ServicesSection() {
                   Native-performance iOS and Android apps from a single Flutter codebase. We build apps that feel native on every device — from MVP to App Store launch.
                 </p>
               </div>
-              <div className="inline-flex w-fit items-center gap-1.5 bg-[#dc2626] text-white px-5 py-3 rounded-lg text-[13px] font-bold transition-all group-hover:opacity-90 group-hover:-translate-y-px mt-auto">
+              <div className="inline-flex w-fit items-center gap-1.5 bg-[#FF1C1C] text-white px-5 py-3 rounded-lg text-[13px] font-medium transition-all group-hover:opacity-90 group-hover:-translate-y-px mt-auto">
                 Explore Service <ArrowRight className="w-4 h-4" />
               </div>
             </div>
@@ -199,7 +199,7 @@ export default function ServicesSection() {
                   We integrate practical large language models into your product — custom RAG pipelines, AI agents, and LLM-powered features that solve real business problems, not just demos.
                 </p>
               </div>
-              <div className="inline-flex w-fit items-center gap-1.5 bg-[#dc2626] text-white px-5 py-3 rounded-lg text-[13px] font-bold transition-all group-hover:opacity-90 group-hover:-translate-y-px mt-auto">
+              <div className="inline-flex w-fit items-center gap-1.5 bg-[#FF1C1C] text-white px-5 py-3 rounded-lg text-[13px] font-medium transition-all group-hover:opacity-90 group-hover:-translate-y-px mt-auto">
                 Explore Service <ArrowRight className="w-4 h-4" />
               </div>
             </div>

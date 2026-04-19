@@ -25,7 +25,7 @@ export default function Capabilities() {
   return (
     <section className="max-w-7xl mx-auto px-6 py-24 border-t border-white/5">
       <div className="text-center mb-16">
-        <h3 className="text-xs font-bold tracking-widest text-[#ff4d4d] uppercase mb-4">Capabilities</h3>
+        <h3 className="text-xs font-bold tracking-widest text-studio-red uppercase mb-4">Capabilities</h3>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-white tracking-tight">How We Build</h2>
       </div>
 

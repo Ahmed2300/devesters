@@ -28,16 +28,16 @@ export default function Footer() {
         <div>
           <h4 className="text-xs font-bold tracking-widest text-studio-red uppercase mb-6">Social</h4>
           <div className="flex gap-4 mb-10">
-            <a href="https://github.com/devesters" target="_blank" rel="noopener noreferrer" className="text-[#d4d4d8] hover:text-white transition-colors" aria-label="GitHub">
+            <a href="https://github.com/devesters" target="_blank" rel="noopener noreferrer" className="text-[#d4d4d8] hover:text-white transition-colors">
               <FiGithub className="w-5 h-5" />
             </a>
-            <a href="https://www.linkedin.com/company/113089086/" target="_blank" rel="noopener noreferrer" className="text-[#d4d4d8] hover:text-white transition-colors" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/company/113089086/" target="_blank" rel="noopener noreferrer" className="text-[#d4d4d8] hover:text-white transition-colors">
               <FiLinkedin className="w-5 h-5" />
             </a>
-            <a href="#" className="text-[#d4d4d8] hover:text-white transition-colors" aria-label="Twitter">
+            <a href="#" className="text-[#d4d4d8] hover:text-white transition-colors">
               <FiTwitter className="w-5 h-5" />
             </a>
-            <a href="mailto:hello@devesters.com" className="text-[#d4d4d8] hover:text-white transition-colors" aria-label="Email Us">
+            <a href="mailto:hello@devesters.com" className="text-[#d4d4d8] hover:text-white transition-colors">
               <FiMail className="w-5 h-5" />
             </a>
           </div>
