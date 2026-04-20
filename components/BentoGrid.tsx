@@ -32,7 +32,19 @@ const projects: IBentoProject[] = [
     description: 'An intelligent agent that filters and ranks freelance opportunities using AI, automating the lead-gen pipeline for agencies.',
     techStack: [],
     gridSpan: 'col-span-1',
+    imageUrl: 'https://i.ibb.co/5X3Np302/image.png',
     actionLink: '/work/hirewire',
+  },
+  {
+    id: 'royal-village',
+    title: 'Royal Village',
+    tag: 'Sports Platform',
+    description: 'Full-featured football club platform offering pitch booking, event hall reservations, and academy registrations powered by Angular Signals.',
+    techStack: ['Angular', 'JavaScript', 'Tailwind'],
+    gridSpan: 'col-span-1',
+    imageUrl: 'https://i.ibb.co/fY9yY80x/Gemini-Generated-Image-dxfudddxfudddxfu.png',
+    iconUrl: 'https://royal-prime-league.netlify.app/assets/images/logo2.png',
+    actionLink: 'https://royal-prime-league.netlify.app/',
   }
 ];
 

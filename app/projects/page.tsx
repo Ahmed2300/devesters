@@ -60,20 +60,20 @@ const projectsData: Project[] = [
   },
   {
     id: 2,
-    title: 'Napta',
+    title: 'Naptah',
     description: 'Comprehensive agricultural ecosystem and e-commerce platform empowering local farmers and buyers.',
     category: 'E-commerce',
     tech: ['Next.js', 'PostgreSQL', 'Stripe'],
     icon: Bot,
     customIcon: 'https://i.ibb.co/7xMRqxcR/Nabtah-logo.png',
-    featured: true, // Make Napta featured as well to show off the landscape cover
+    featured: true, // Make Naptah featured as well to show off the landscape cover
     coverImage: true,
     covers: {
       landscape: 'https://i.ibb.co/7tNm1JQM/Gemini-Generated-Image-eqan4veqan4veqan.png',
       portrait: 'https://i.ibb.co/xtGX7VFm/Gemini-Generated-Image-bprpw7bprpw7bprp.png',
       square: 'https://i.ibb.co/LDKxt53p/Gemini-Generated-Image-e2upore2upore2up.png'
     },
-    link: '/projects/napta',
+    link: '/projects/naptah',
     previewUrl: 'https://naptah.netlify.app/'
   },
   {
@@ -94,6 +94,24 @@ const projectsData: Project[] = [
     link: '/projects/blackwater'
   },
   {
+    id: 10,
+    title: 'Royal Village',
+    description: 'Full-featured football club platform offering pitch booking, event hall reservations, and academy registrations powered by Angular Signals.',
+    category: 'Sports Platform',
+    tech: ['Angular', 'JavaScript', 'Tailwind CSS'],
+    icon: Activity,
+    customIcon: 'https://royal-prime-league.netlify.app/assets/images/logo2.png',
+    featured: true,
+    coverImage: true,
+    covers: {
+      landscape: 'https://i.ibb.co/Xf041W6v/Gemini-Generated-Image-xd050dxd050dxd05.png',
+      portrait: 'https://i.ibb.co/fY9yY80x/Gemini-Generated-Image-dxfudddxfudddxfu.png',
+      square: 'https://i.ibb.co/fY9yY80x/Gemini-Generated-Image-dxfudddxfudddxfu.png'
+    },
+    link: '/projects/royal-village',
+    previewUrl: 'https://royal-prime-league.netlify.app/'
+  },
+  {
     id: 4,
     title: 'HireWire',
     description: 'An intelligent agent that filters and ranks freelance opportunities using AI, automating the lead-gen pipeline for agencies.',
@@ -101,6 +119,12 @@ const projectsData: Project[] = [
     tech: ['OpenAI', 'Next.js', 'TypeScript', 'LangChain'],
     icon: Bot,
     featured: false,
+    coverImage: true,
+    covers: {
+      landscape: 'https://i.ibb.co/5X3Np302/image.png',
+      portrait: 'https://i.ibb.co/5X3Np302/image.png',
+      square: 'https://i.ibb.co/5X3Np302/image.png'
+    },
     link: '/projects/hirewire'
   },
   {

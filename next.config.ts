@@ -49,6 +49,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'royal-prime-league.netlify.app',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
   output: 'standalone',
