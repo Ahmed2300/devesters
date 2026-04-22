@@ -370,6 +370,18 @@ export default function ProjectsPage() {
                   </div>
                 ) : (
                   <>
+                    {project.covers && project.coverImage && (
+                      <div className="absolute inset-0 z-0 opacity-20 group-hover:opacity-40 transition-opacity duration-500">
+                        <Image 
+                          src={project.covers.landscape || project.covers.square || project.covers.portrait} 
+                          alt={`${project.title} Cover`} 
+                          fill
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                          className="object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#121214] via-[#121214]/80 to-transparent" />
+                      </div>
+                    )}
                     <div className="relative z-10 flex justify-between items-start p-8">
                       <div className="w-12 h-12 rounded-[12px] bg-transparent border border-white/10 flex items-center justify-center backdrop-blur-md overflow-hidden">
                         {project.customIcon ? (

@@ -4,7 +4,7 @@ import './globals.css'; // Global styles
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SmoothScrolling from '@/components/SmoothScrolling';
-import ParticleBackground from '@/components/ParticleBackground';
+import ParticleBackgroundWrapper from '@/components/ParticleBackgroundWrapper';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -80,7 +80,7 @@ const organizationSchema = {
   "@type": "ProfessionalService",
   "name": "Devesters",
   "alternateName": ["Devsters", "Devstrs", "Devesetrs"],
-  "image": "https://i.ibb.co/3Y0bCFgM/devesters-icon.png",
+  "image": "https://devesters.com/devesters_icon.png",
   "url": "https://devesters.com",
   "description": "Premium software engineering collective specializing in SaaS platforms, Flutter mobile apps, and AI integrations.",
   "address": {
@@ -109,7 +109,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         />
       </head>
       <body className="font-sans antialiased" suppressHydrationWarning>
-        <ParticleBackground />
+        <ParticleBackgroundWrapper />
         <SmoothScrolling>
           <Navbar />
           {children}
