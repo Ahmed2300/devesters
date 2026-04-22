@@ -28,11 +28,17 @@ export const metadata: Metadata = {
     template: '%s | Devesters',
   },
   description: 'We transform ideas into scalable digital ecosystems. Expert Next.js, Flutter, and AI engineering for enterprise SaaS and cross-platform apps.',
-  keywords: ['Software Studio', 'Next.js Agency', 'Flutter Development', 'AI Integration', 'SaaS Architecture', 'Egypt', 'MENA Tech'],
+  keywords: ['Devesters', 'Devsters', 'Devstrs', 'Devesetrs', 'Software Studio', 'Next.js Agency', 'Flutter Development', 'AI Integration', 'SaaS Architecture', 'Egypt', 'MENA Tech'],
   authors: [{ name: 'Ahmed Azam' }, { name: 'Devesters Team' }],
   creator: 'Devesters',
   icons: {
-    icon: 'https://i.ibb.co/3Y0bCFgM/devesters-icon.png',
+    icon: [
+      { url: '/devesters_icon.png', type: 'image/png' }
+    ],
+    shortcut: ['/devesters_icon.png'],
+    apple: [
+      { url: '/devesters_icon.png', type: 'image/png' }
+    ],
   },
   openGraph: {
     type: 'website',
@@ -73,6 +79,7 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "Devesters",
+  "alternateName": ["Devsters", "Devstrs", "Devesetrs"],
   "image": "https://i.ibb.co/3Y0bCFgM/devesters-icon.png",
   "url": "https://devesters.com",
   "description": "Premium software engineering collective specializing in SaaS platforms, Flutter mobile apps, and AI integrations.",
