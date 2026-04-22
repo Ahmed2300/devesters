@@ -24,7 +24,7 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#050509]/80 backdrop-blur-lg border-b border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-0 z-50">
-          <Image src="/devesters_icon.png" alt="Devesters Logo" width={24} height={24} className="rounded-sm" referrerPolicy="no-referrer" />
+          <Image src="https://i.ibb.co/3Y0bCFgM/devesters-icon.png" alt="Devesters Logo" width={24} height={24} className="rounded-sm" referrerPolicy="no-referrer" />
           <span className="text-xl font-heading font-bold tracking-tight text-white -ml-0.5">EVesters</span>
         </Link>
 
@@ -61,9 +61,8 @@ export default function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <button 
-          className="lg:hidden z-50 p-2 text-white hover:text-studio-red transition-colors"
+          className="lg:hidden z-50 p-2 text-white"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label={isMobileMenuOpen ? "Close Mobile Menu" : "Open Mobile Menu"}
         >
           {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
