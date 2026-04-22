@@ -90,7 +90,8 @@ const organizationSchema = {
   },
   "sameAs": [
     "https://www.linkedin.com/company/113089086/",
-    "https://github.com/devesters"
+    "https://github.com/devesters",
+    "https://www.facebook.com/profile.php?id=61568971049547"
   ],
   "founder": {
     "@type": "Person",
