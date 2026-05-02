@@ -3,57 +3,11 @@
 import { motion } from 'motion/react';
 import { Star } from 'lucide-react';
 
-const TESTIMONIALS = [
-  {
-    "id": 1,
-    "client_name": "Abdullah Elshorbagy",
-    "client_role": "Operations Manager, Masarat Initiative",
-    "project_reference": "Soubul LMS",
-    "review": "بصراحة الشغل مع تيم Devesters كان نقطة تحول كبيرة لمبادرة مسارات. منصة سُبُل مكانتش مجرد بروجيكت تقني عادي، دي كانت حل ذكي بيستوعب كل تعقيدات قطاع التعليم. احترافية الشباب في بناء السيستم وتأمين الداتا بتعكس مستوى هندسي عالمي مفيش زيه.",
-    "rating": 5,
-    "avatar_fallback": "AE"
-  },
-  {
-    "id": 2,
-    "client_name": "Dr. Tariq Al-Mansour",
-    "client_role": "Executive Director",
-    "project_reference": "Enterprise Platforms",
-    "review": "ما كنا ندور على مجرد شركة تسوي لنا موقع، كنا نبي شريك هندسي يبني لنا نظام متكامل. شباب Devesters قدموا لنا بنية تحتية قوية تتحمل آلاف للمستخدمين بنفس الوقت بدون ما يطيح الأداء. اهتمامهم بهندسة الباك إند وتأمين بوابات الدفع صراحة كان شيء استثنائي.",
-    "rating": 5,
-    "avatar_fallback": "TA"
-  },
-  {
-    "id": 3,
-    "client_name": "Eng. Abdulrahman Al-Suwaidi",
-    "client_role": "Founder, AgTech Startup",
-    "project_reference": "Naptah Ecosystem",
-    "review": "Working with Devesters is entirely different from any other software agency. They have a profound understanding of how to integrate AI architectures into real-world products. Thanks to their advanced engineering, our startup scaled effortlessly and won multiple accelerator awards.",
-    "rating": 5,
-    "avatar_fallback": "AS"
-  },
-  {
-    "id": 4,
-    "client_name": "Sarah Al-Ghamdi",
-    "client_role": "Digital Product Manager",
-    "project_reference": "Cross-Platform Mobile Apps",
-    "review": "جودة الكود وتجربة المستخدم (UI/UX) التي تخرج من هذا الاستوديو تنافس كبرى الشركات العالمية. تطبيقنا، والذي تم بناؤه باستخدام Flutter، يعمل بسلاسة مذهلة وبأداء يضاهي التطبيقات الأصيلة (Native). فريق محترف وملتزم بالمواعيد بدقة متناهية.",
-    "rating": 5,
-    "avatar_fallback": "SG"
-  },
-  {
-    "id": 5,
-    "client_name": "Khalid Al-Hashimi",
-    "client_role": "CTO, Regional Agency",
-    "project_reference": "HireWire AI Tooling",
-    "review": "كثير أوقات بنوكل المهام البرمجية المعقدة اللي بدها أداء عالي لفريق Devesters. قدرتهم على بناء أدوات الـ AI وأتمتة العمليات وفرت علينا مئات الساعات. هدول مش مجرد مبرمجين، هدول مهندسين حلول بيمتلكوا رؤية استراتيجية ودايماً بيعطونا الأفضل.",
-    "rating": 5,
-    "avatar_fallback": "KH"
-  }
-];
-
-export default function Testimonials() {
+export default function Testimonials({ testimonials }: { testimonials: any[] }) {
   // Duplicating the array to allow for a seamless infinite loop
-  const items = [...TESTIMONIALS, ...TESTIMONIALS];
+  const items = [...testimonials, ...testimonials];
+
+  if (!testimonials || testimonials.length === 0) return null;
 
   return (
     <section className="py-24 border-t border-white/5 overflow-hidden">

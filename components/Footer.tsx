@@ -1,8 +1,17 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { FiGithub, FiLinkedin, FiFacebook, FiMail } from 'react-icons/fi';
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  if (pathname.startsWith('/admin')) {
+    return null;
+  }
+
   return (
     <footer className="border-t border-white/5 bg-[#050509] pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
@@ -22,6 +31,7 @@ export default function Footer() {
             <li><Link href="/" className="text-sm text-[#d4d4d8] hover:text-white transition-colors uppercase tracking-wider text-[10px] font-bold">Work</Link></li>
             <li><Link href="/services" className="text-sm text-[#d4d4d8] hover:text-white transition-colors uppercase tracking-wider text-[10px] font-bold">Services</Link></li>
             <li><Link href="/process" className="text-sm text-[#d4d4d8] hover:text-white transition-colors uppercase tracking-wider text-[10px] font-bold">Process</Link></li>
+            <li><Link href="/admin/login" className="text-sm text-[#d4d4d8] hover:text-white transition-colors uppercase tracking-wider text-[10px] font-bold">Admin</Link></li>
           </ul>
         </div>
 

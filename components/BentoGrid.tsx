@@ -1,54 +1,11 @@
+import { createClient } from '@/lib/supabase/server';
 import BentoCard, { IBentoProject } from './BentoCard';
 import { SiNextdotjs, SiReact, SiFlutter, SiNodedotjs, SiPython, SiPhp, SiLaravel, SiDart, SiGo } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa';
 
-const projects: IBentoProject[] = [
-  {
-    id: 'soubul',
-    title: 'Soubul',
-    tag: 'SaaS / LMS',
-    description: 'A comprehensive LMS platform with complex architecture and integrated payments. Designed for enterprise-level scaling.',
-    techStack: ['React.ts', 'Flutter', 'Dart', 'PHP', 'Laravel'],
-    gridSpan: 'col-span-1 lg:col-span-2',
-    imageUrl: 'https://i.ibb.co/HDSFW2pc/Soubul-welocome-page.png',
-    iconUrl: 'https://i.ibb.co/Hf5bYZns/subol-red.png',
-    actionLink: 'https://www.soubul.net/',
-  },
-  {
-    id: 'naptah',
-    title: 'Naptah',
-    tag: 'AI & AgTech',
-    description: 'Award-winning AI-powered agricultural ecosystem with advanced LLM integration for precision farming.',
-    techStack: ['React.js', 'Tailwind', 'Flutter', 'Dart', 'Node.js', 'Firebase', 'AWS'],
-    gridSpan: 'col-span-1 row-span-2',
-    imageUrl: 'https://i.ibb.co/xtGX7VFm/Gemini-Generated-Image-bprpw7bprpw7bprp.png',
-    iconUrl: 'https://i.ibb.co/hRLR9Rf5/Nabtah-logo.png',
-    actionLink: 'https://naptah.netlify.app/',
-  },
-  {
-    id: 'hirewire',
-    title: 'HireWire',
-    tag: 'AI Tooling',
-    description: 'An intelligent agent that filters and ranks freelance opportunities using AI, automating the lead-gen pipeline for agencies.',
-    techStack: [],
-    gridSpan: 'col-span-1',
-    imageUrl: 'https://i.ibb.co/5X3Np302/image.png',
-    actionLink: '/work/hirewire',
-  },
-  {
-    id: 'royal-village',
-    title: 'Royal Village',
-    tag: 'Sports Platform',
-    description: 'Full-featured football club platform offering pitch booking, event hall reservations, and academy registrations powered by Angular Signals.',
-    techStack: ['Angular', 'JavaScript', 'Tailwind'],
-    gridSpan: 'col-span-1',
-    imageUrl: 'https://i.ibb.co/fY9yY80x/Gemini-Generated-Image-dxfudddxfudddxfu.png',
-    iconUrl: 'https://royal-prime-league.netlify.app/assets/images/logo2.png',
-    actionLink: 'https://royal-prime-league.netlify.app/',
-  }
-];
+export default function BentoGrid({ projects }: { projects?: IBentoProject[] }) {
+  if (!projects || projects.length === 0) return null;
 
-export default function BentoGrid() {
   return (
     <section className="relative max-w-7xl mx-auto px-6 py-20">
       {/* Background Glow */}
