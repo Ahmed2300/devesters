@@ -52,8 +52,8 @@ export default function Footer() {
             </a>
           </div>
           <div className="text-[10px] font-bold tracking-wider text-[#d4d4d8]/60 uppercase leading-relaxed">
-            Located in Cairo, Egypt<br />
-            Operating Globally
+            Mansoura Qism 2, El Mansoura 1,<br />
+            Dakahlia Governorate
           </div>
         </div>
       </div>
