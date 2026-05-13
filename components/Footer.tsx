@@ -51,9 +51,14 @@ export default function Footer() {
               <FiMail className="w-5 h-5" />
             </a>
           </div>
-          <div className="text-[10px] font-bold tracking-wider text-[#d4d4d8]/60 uppercase leading-relaxed">
+          <div className="text-[10px] font-bold tracking-wider text-[#d4d4d8]/60 uppercase leading-relaxed mb-4">
             Mansoura Qism 2, El Mansoura 1,<br />
             Dakahlia Governorate
+          </div>
+          <div className="text-[10px] font-bold tracking-wider text-[#d4d4d8] uppercase leading-relaxed">
+            <a href="tel:+201036178703" className="hover:text-white transition-colors">
+              +20 103 617 8703
+            </a>
           </div>
         </div>
       </div>

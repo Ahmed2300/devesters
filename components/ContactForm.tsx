@@ -38,13 +38,20 @@ ${message}
 
   return (
     <div className="w-full">
-      <div className="mb-8">
+      <div className="mb-8 flex flex-col md:flex-row gap-6">
         <a 
           href="mailto:hello@devesters.com" 
           className="inline-flex items-center text-sm text-zinc-400 hover:text-white transition-colors"
         >
           <span className="mr-2">Direct Email:</span> 
           <span className="font-medium underline decoration-white/20 underline-offset-4 pointer-events-auto">hello@devesters.com</span>
+        </a>
+        <a 
+          href="tel:+201036178703" 
+          className="inline-flex items-center text-sm text-zinc-400 hover:text-white transition-colors"
+        >
+          <span className="mr-2">Mobile:</span> 
+          <span className="font-medium underline decoration-white/20 underline-offset-4 pointer-events-auto">+20 103 617 8703</span>
         </a>
       </div>
 

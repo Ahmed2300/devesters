@@ -18,7 +18,7 @@ export interface IBentoProject {
 }
 
 export default function BentoCard({ project }: { project: IBentoProject }) {
-  const isExternal = project.actionLink.startsWith('http');
+  const isExternal = project.actionLink.startsWith('http') || project.actionLink.includes('.') || project.actionLink.startsWith('//');
   const CardWrapper = isExternal ? 'a' : Link;
 
   return (

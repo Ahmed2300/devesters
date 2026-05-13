@@ -24,7 +24,7 @@ export default async function Home() {
     gridSpan: index === 0 ? 'col-span-1 lg:col-span-2' : (index === 1 ? 'col-span-1 row-span-2' : 'col-span-1'),
     imageUrl: p.covers?.landscape || p.covers?.square || p.covers?.portrait || '',
     iconUrl: p.custom_icon || '',
-    actionLink: p.link
+    actionLink: p.preview_url || p.previewUrl || p.github_url || p.link || '#'
   })) || [];
 
   return (
