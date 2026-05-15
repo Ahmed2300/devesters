@@ -24,7 +24,7 @@ export default function BentoCard({ project }: { project: IBentoProject }) {
   return (
     <CardWrapper 
       href={project.actionLink} 
-      {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : { prefetch: false })}
       className={`block group ${project.gridSpan}`}
     >
       <motion.div

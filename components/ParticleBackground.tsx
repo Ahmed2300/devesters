@@ -109,7 +109,7 @@ const ParticleBackground = () => {
     // Initialize Particle Field
     const init = () => {
       particlesArray = [];
-      const numberOfParticles = (canvas.width * canvas.height) / 8000; // Adjust density here
+      const numberOfParticles = (canvas.width * canvas.height) / 20000; // Adjust density here
       for (let i = 0; i < numberOfParticles; i++) {
         let x = Math.random() * canvas.width;
         let y = Math.random() * canvas.height;

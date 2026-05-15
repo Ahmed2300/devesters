@@ -1,10 +1,15 @@
 import { createClient } from '@/lib/supabase/server';
+import dynamic from 'next/dynamic';
 import Hero from '@/components/Hero';
 import ServicesSection from '@/components/ServicesSection';
-import InfinityCodeSection from '@/components/InfinityCodeSection';
-import BentoGrid from '@/components/BentoGrid';
-import Capabilities from '@/components/Capabilities';
-import Testimonials from '@/components/Testimonials';
+
+const InfinityCodeSection = dynamic(() => import('@/components/InfinityCodeSection'), {
+  loading: () => <div className="h-[600px] w-full flex items-center justify-center bg-black/20 animate-pulse rounded-3xl" />
+});
+
+const BentoGrid = dynamic(() => import('@/components/BentoGrid'));
+const Capabilities = dynamic(() => import('@/components/Capabilities'));
+const Testimonials = dynamic(() => import('@/components/Testimonials'));
 
 export default async function Home() {
   const supabase = await createClient();
