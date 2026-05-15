@@ -4,8 +4,11 @@ import './globals.css'; // Global styles
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SmoothScrolling from '@/components/SmoothScrolling';
-import ParticleBackground from '@/components/ParticleBackground';
+import dynamic from 'next/dynamic';
 
+const ParticleBackground = dynamic(() => import('@/components/ParticleBackground'), {
+  ssr: false,
+});
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',

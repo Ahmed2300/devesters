@@ -27,7 +27,7 @@ const techStack = [
   { name: "Golang", icon: SiGo }
 ];
 
-export default function Hero() {
+function TypewriterText() {
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
@@ -68,6 +68,18 @@ export default function Hero() {
   const hasSpace = text.includes(' ');
 
   return (
+    <span className="whitespace-normal sm:whitespace-nowrap text-center">
+      That{' '}
+      <span className="text-studio-red italic font-mono">{highlightWord}</span>
+      {hasSpace ? ' ' : ''}
+      {restWords}
+      <span className="animate-pulse text-studio-red font-mono">|</span>
+    </span>
+  );
+}
+
+export default function Hero() {
+  return (
     <section className="relative min-h-[85vh] flex flex-col items-center justify-center pt-20 overflow-hidden">
       {/* Radial Gradient Background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-studio-red/15 via-transparent to-transparent -z-10" />
@@ -83,13 +95,7 @@ export default function Hero() {
           className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tight text-white mb-6 leading-tight flex flex-col items-center"
         >
           <span className="whitespace-normal sm:whitespace-nowrap text-center">We Build the Products</span>
-          <span className="whitespace-normal sm:whitespace-nowrap text-center">
-            That{' '}
-            <span className="text-studio-red italic font-mono">{highlightWord}</span>
-            {hasSpace ? ' ' : ''}
-            {restWords}
-            <span className="animate-pulse text-studio-red font-mono">|</span>
-          </span>
+          <TypewriterText />
         </h1>
 
         <p
