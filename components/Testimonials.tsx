@@ -12,7 +12,7 @@ export default function Testimonials({ testimonials }: { testimonials: any[] }) 
   return (
     <section className="py-24 border-t border-white/5 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
-        <h3 className="text-xs font-bold tracking-widest text-studio-red uppercase mb-4">Client Feedback</h3>
+        <div className="text-xs font-bold tracking-widest text-studio-red uppercase mb-4">Client Feedback</div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-white tracking-tight">Trusted by Partners</h2>
       </div>
 
@@ -54,9 +54,9 @@ export default function Testimonials({ testimonials }: { testimonials: any[] }) 
                   {item.avatar_fallback}
                 </div>
                 <div>
-                  <h4 className="text-white font-bold text-sm flex items-center gap-2">
+                  <h3 className="text-white font-bold text-sm flex items-center gap-2">
                     {item.client_name}
-                  </h4>
+                  </h3>
                   <p className="text-xs text-[#a1a1aa] mt-1">{item.client_role}</p>
                   <p className="text-[10px] text-red-500 font-bold tracking-wider uppercase mt-2 bg-red-500/10 border border-red-500/20 px-2 py-0.5 rounded-full inline-block">
                     {item.project_reference}
