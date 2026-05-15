@@ -4,11 +4,8 @@ import './globals.css'; // Global styles
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SmoothScrolling from '@/components/SmoothScrolling';
-import dynamic from 'next/dynamic';
+import ParticleBackgroundClient from '@/components/ParticleBackgroundClient';
 
-const ParticleBackground = dynamic(() => import('@/components/ParticleBackground'), {
-  ssr: false,
-});
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
@@ -112,7 +109,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         />
       </head>
       <body className="font-sans antialiased" suppressHydrationWarning>
-        <ParticleBackground />
+        <ParticleBackgroundClient />
         <SmoothScrolling>
           <Navbar />
           {children}
