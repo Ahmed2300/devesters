@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
 export default function ServicesSection() {
@@ -30,47 +31,14 @@ export default function ServicesSection() {
                 Web Development
               </div>
               
-              {/* Web Dashboard Illustration */}
-              <div className="w-[80%] h-[60%] bg-[#121214] border border-white/10 rounded-lg shadow-xl overflow-hidden flex flex-col">
-                <div className="flex-1 flex">
-                  {/* Sidebar */}
-                  <div className="w-1/4 border-r border-white/5 p-2 space-y-2">
-                    <div className="w-full h-2 rounded bg-white/10 mb-4"></div>
-                    <div className="w-3/4 h-1.5 rounded bg-white/5"></div>
-                    <div className="w-full h-1.5 rounded bg-white/5"></div>
-                    <div className="w-2/3 h-1.5 rounded bg-[#FF1C1C]/50"></div>
-                  </div>
-                  {/* Main Content */}
-                  <div className="w-3/4 p-3 flex flex-col gap-3">
-                    {/* Topbar */}
-                    <div className="flex justify-between items-center mb-2">
-                      <div className="w-1/2 h-2 rounded bg-white/5"></div>
-                      <div className="w-4 h-4 rounded-full bg-white/10"></div>
-                    </div>
-                    {/* Data Table */}
-                    <div className="space-y-2">
-                      <div className="flex gap-2">
-                        <div className="h-1.5 w-1/4 bg-white/10 rounded"></div>
-                        <div className="h-1.5 w-1/4 bg-white/10 rounded"></div>
-                        <div className="h-1.5 w-1/4 bg-white/10 rounded"></div>
-                        <div className="h-1.5 w-1/4 bg-[#FF1C1C]/60 rounded"></div>
-                      </div>
-                      <div className="flex gap-2">
-                        <div className="h-1.5 w-1/4 bg-white/5 rounded"></div>
-                        <div className="h-1.5 w-1/4 bg-white/5 rounded"></div>
-                        <div className="h-1.5 w-1/4 bg-white/5 rounded"></div>
-                        <div className="h-1.5 w-1/4 bg-[#FF1C1C]/30 rounded"></div>
-                      </div>
-                      <div className="flex gap-2">
-                        <div className="h-1.5 w-1/4 bg-white/5 rounded"></div>
-                        <div className="h-1.5 w-1/4 bg-white/5 rounded"></div>
-                        <div className="h-1.5 w-1/4 bg-white/5 rounded"></div>
-                        <div className="h-1.5 w-1/4 bg-[#FF1C1C]/30 rounded"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <Image 
+                src="https://i.ibb.co/tMWmNTFH/89ddb762e6f4.jpg" 
+                alt="Web & SaaS Development" 
+                fill 
+                className="object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
+                referrerPolicy="no-referrer"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
             </div>
             
             {/* Content Area */}
@@ -94,42 +62,14 @@ export default function ServicesSection() {
                 Mobile App Development
               </div>
               
-              {/* Overlapping Phones Illustration */}
-              <div className="relative w-full h-full flex items-center justify-center">
-                {/* Left Phone */}
-                <div className="absolute w-[60px] md:w-[70px] h-[130px] rounded-[12px] bg-[#121214] border border-white/5 right-[55%] transform -rotate-12 translate-y-4 opacity-80 overflow-hidden p-2 flex flex-col gap-2">
-                  <div className="text-[8px] text-zinc-400">Weekly</div>
-                  <div className="text-[10px] text-emerald-400 font-bold">+2.1%</div>
-                  <div className="flex-1 flex items-end gap-1">
-                    <div className="w-1/4 h-full bg-emerald-500/20 rounded-t-sm relative"><div className="absolute bottom-0 w-full h-[40%] bg-emerald-500/60 rounded-t-sm"></div></div>
-                    <div className="w-1/4 h-full bg-emerald-500/20 rounded-t-sm relative"><div className="absolute bottom-0 w-full h-[60%] bg-emerald-500/60 rounded-t-sm"></div></div>
-                    <div className="w-1/4 h-full bg-emerald-500/20 rounded-t-sm relative"><div className="absolute bottom-0 w-full h-[80%] bg-emerald-500/80 rounded-t-sm"></div></div>
-                  </div>
-                </div>
-
-                {/* Right Phone */}
-                <div className="absolute w-[60px] md:w-[70px] h-[130px] rounded-[12px] bg-[#121214] border border-white/5 left-[55%] transform rotate-12 translate-y-4 opacity-80 overflow-hidden p-2 flex flex-col gap-2">
-                  <div className="text-[8px] text-zinc-400">Recent</div>
-                  <div className="flex gap-2 items-center bg-white/5 p-1 rounded-sm"><div className="w-3 h-3 rounded-full bg-white/20"></div><div className="h-1 w-full bg-emerald-400/80 rounded"></div></div>
-                  <div className="flex gap-2 items-center bg-white/5 p-1 rounded-sm"><div className="w-3 h-3 rounded-full bg-white/20"></div><div className="h-1 w-full bg-emerald-400/60 rounded"></div></div>
-                  <div className="flex gap-2 items-center bg-white/5 p-1 rounded-sm"><div className="w-3 h-3 rounded-full bg-white/20"></div><div className="h-1 w-full bg-emerald-400/40 rounded"></div></div>
-                </div>
-
-                {/* Center Phone */}
-                <div className="relative w-[75px] md:w-[90px] h-[160px] rounded-[16px] bg-[#0c0c0e] border border-white/15 z-10 shadow-2xl overflow-hidden p-2 flex flex-col items-center">
-                  <div className="w-[30%] h-[4px] bg-white/10 rounded-full mx-auto mb-2 mt-1"></div>
-                  {/* Circular Donut mock */}
-                  <div className="relative w-14 h-14 md:w-16 md:h-16 rounded-full border-[4px] border-emerald-500/30 border-t-emerald-400 flex items-center justify-center mb-3">
-                    <div className="text-[10px] md:text-[11px] font-bold text-white">$94k</div>
-                  </div>
-                  <div className="w-full flex justify-between px-1">
-                    <div className="flex flex-col items-center"><div className="w-2 h-2 rounded-full bg-emerald-400 mb-1"></div><span className="text-[7px] text-zinc-400">60%</span></div>
-                    <div className="flex flex-col items-center"><div className="w-2 h-2 rounded-full bg-emerald-500/50 mb-1"></div><span className="text-[7px] text-zinc-400">21%</span></div>
-                    <div className="flex flex-col items-center"><div className="w-2 h-2 rounded-full bg-white/20 mb-1"></div><span className="text-[7px] text-zinc-400">19%</span></div>
-                  </div>
-                </div>
-
-              </div>
+              <Image 
+                src="https://i.ibb.co/ynGS48HJ/e69cc6a9e314.jpg" 
+                alt="Cross-Platform Mobile Engineering" 
+                fill 
+                className="object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
+                referrerPolicy="no-referrer"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
             </div>
             
             <div className="p-6 flex-1 flex flex-col justify-between">
@@ -152,43 +92,14 @@ export default function ServicesSection() {
                 AI Integration
               </div>
               
-              {/* Floating Pills */}
-              <div className="absolute top-6 right-6 px-2 py-0.5 rounded-full bg-violet-500/20 text-violet-200 border border-violet-500/30 text-[8px] transform rotate-3">LangChain</div>
-              <div className="absolute bottom-8 left-6 px-2 py-0.5 rounded-full bg-violet-500/20 text-violet-200 border border-violet-500/30 text-[8px] transform -rotate-6">OpenAI</div>
-              <div className="absolute top-1/2 right-[10%] px-2 py-0.5 rounded-full bg-violet-500/20 text-violet-200 border border-violet-500/30 text-[8px] transform -rotate-3">RAG</div>
-
-              {/* AI Interaction Diagram */}
-              <div className="flex items-center gap-6 z-10">
-                {/* Chat Panel */}
-                <div className="w-[110px] h-[130px] rounded-[10px] bg-[#121214] border border-white/5 flex flex-col p-2 space-y-2">
-                  <div className="self-end bg-[#FF1C1C]/20 border border-[#FF1C1C]/30 rounded-lg p-1.5 w-[75%] rounded-br-none">
-                    <div className="h-1 bg-[#FF1C1C]/50 rounded w-full line-clamp-1 mb-0.5"></div>
-                    <div className="h-1 bg-[#FF1C1C]/50 rounded w-2/3"></div>
-                  </div>
-                  <div className="self-start bg-white/[0.05] border border-white/10 rounded-lg p-1.5 w-[85%] rounded-bl-none">
-                    <div className="h-1 bg-white/40 rounded w-full mb-1"></div>
-                    <div className="h-4 w-full bg-violet-500/20 rounded-[2px] flex items-end gap-0.5 pt-0.5 p-0.5">
-                      <div className="w-1/3 bg-violet-400 h-[60%] rounded-t-[1px]"></div>
-                      <div className="w-1/3 bg-violet-400 h-[100%] rounded-t-[1px]"></div>
-                      <div className="w-1/3 bg-violet-400 h-[40%] rounded-t-[1px]"></div>
-                    </div>
-                  </div>
-                  <div className="mt-auto h-4 border border-white/10 rounded bg-[#1c1c1f] flex items-center justify-end px-1">
-                    <div className="w-2 h-2 rounded-sm bg-white/20"></div>
-                  </div>
-                </div>
-
-                {/* Pipeline Logic */}
-                <div className="flex flex-col items-center gap-1.5">
-                  <div className="px-2 py-1 bg-white/5 rounded-md border border-white/10 text-[7px] text-zinc-400 uppercase">Input</div>
-                  <div className="h-4 border-l border-dashed border-white/20"></div>
-                  <div className="px-2 py-1.5 bg-violet-500/10 rounded-md border border-violet-500/30 shadow-[0_0_10px_rgba(139,92,246,0.2)] text-[8px] text-violet-300 font-bold tracking-widest text-center leading-tight">
-                    LLM<br />RAG
-                  </div>
-                  <div className="h-4 border-l border-dashed border-white/20"></div>
-                  <div className="px-2 py-1 bg-white/5 rounded-md border border-white/10 text-[7px] text-zinc-400 uppercase">Output</div>
-                </div>
-              </div>
+              <Image 
+                src="https://i.ibb.co/JXqn8VN/8e4854b9ddc0.jpg" 
+                alt="AI Integration & LLM Tooling" 
+                fill 
+                className="object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
+                referrerPolicy="no-referrer"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
 
             </div>
             
