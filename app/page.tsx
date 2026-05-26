@@ -15,7 +15,7 @@ export default async function Home() {
   const supabase = await createClient();
 
   const [{ data: projectsData }, { data: testimonialsData }] = await Promise.all([
-    supabase.from('projects').select('*').eq('featured', true).limit(4),
+    supabase.from('projects').select('*').eq('featured', true).order('created_at', { ascending: false }).limit(4),
     supabase.from('testimonials').select('*')
   ]);
 
