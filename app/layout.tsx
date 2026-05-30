@@ -1,10 +1,12 @@
 import type {Metadata} from 'next';
-import { Inter, Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
+import { Inter, Plus_Jakarta_Sans, JetBrains_Mono, Cairo } from 'next/font/google';
+import { cookies } from 'next/headers';
 import './globals.css'; // Global styles
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SmoothScrolling from '@/components/SmoothScrolling';
 import ParticleBackgroundClient from '@/components/ParticleBackgroundClient';
+import { LanguageProvider } from '@/components/LanguageProvider';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -19,6 +21,12 @@ const plusJakarta = Plus_Jakarta_Sans({
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-mono',
+});
+
+const cairo = Cairo({
+  subsets: ['arabic'],
+  variable: '--font-cairo',
+  weight: ['300', '400', '500', '600', '700', '800'],
 });
 
 export const metadata: Metadata = {
@@ -99,9 +107,13 @@ const organizationSchema = {
   }
 };
 
-export default function RootLayout({children}: {children: React.ReactNode}) {
+export default async function RootLayout({children}: {children: React.ReactNode}) {
+  const cookieStore = await cookies();
+  const locale = (cookieStore.get('locale')?.value || 'ar') as 'ar' | 'en';
+  const dir = locale === 'ar' ? 'rtl' : 'ltr';
+
   return (
-    <html lang="en" className={`${inter.variable} ${plusJakarta.variable} ${jetbrainsMono.variable}`}>
+    <html lang={locale} dir={dir} className={`${inter.variable} ${plusJakarta.variable} ${jetbrainsMono.variable} ${cairo.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -109,12 +121,14 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         />
       </head>
       <body className="font-sans antialiased" suppressHydrationWarning>
-        <ParticleBackgroundClient />
-        <SmoothScrolling>
-          <Navbar />
-          {children}
-          <Footer />
-        </SmoothScrolling>
+        <LanguageProvider initialLocale={locale}>
+          <ParticleBackgroundClient />
+          <SmoothScrolling>
+            <Navbar />
+            {children}
+            <Footer />
+          </SmoothScrolling>
+        </LanguageProvider>
       </body>
     </html>
   );

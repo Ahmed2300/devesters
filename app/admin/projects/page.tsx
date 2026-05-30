@@ -1,6 +1,8 @@
 import { createClient } from '@/lib/supabase/server';
 import ProjectsClient from './Client';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminProjects() {
   const supabase = await createClient();
   const { data: projects, error } = await supabase.from('projects').select('*').order('created_at', { ascending: false });

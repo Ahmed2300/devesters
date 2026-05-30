@@ -2,31 +2,36 @@
 
 import { FiGlobe, FiSmartphone, FiCpu } from 'react-icons/fi';
 import { motion } from 'motion/react';
-
-const capabilities = [
-  {
-    title: 'Web & SaaS',
-    description: 'High-performance web applications built with the most modern tech stacks. Focused on speed, SEO, and seamless user experiences.',
-    icon: FiGlobe,
-  },
-  {
-    title: 'Mobile',
-    description: 'Cross-platform development without compromise. Using Flutter and React Native to deliver native-feel apps from a single codebase.',
-    icon: FiSmartphone,
-  },
-  {
-    title: 'AI Integration',
-    description: 'Leveraging LLMs and machine learning to build intelligent features that actually solve business problems, from agents to computer vision.',
-    icon: FiCpu,
-  }
-];
+import { useLanguage } from '@/components/LanguageProvider';
+import { getDictionary } from '@/lib/i18n/dictionaries';
 
 export default function Capabilities() {
+  const { locale } = useLanguage();
+  const dict = getDictionary(locale);
+
+  const capabilities = [
+    {
+      title: dict.capabilities.webTitle,
+      description: dict.capabilities.webDesc,
+      icon: FiGlobe,
+    },
+    {
+      title: dict.capabilities.mobileTitle,
+      description: dict.capabilities.mobileDesc,
+      icon: FiSmartphone,
+    },
+    {
+      title: dict.capabilities.aiTitle,
+      description: dict.capabilities.aiDesc,
+      icon: FiCpu,
+    },
+  ];
+
   return (
     <section className="max-w-7xl mx-auto px-6 py-24 border-t border-white/5">
       <div className="text-center mb-16">
-        <h3 className="text-xs font-bold tracking-widest text-studio-red uppercase mb-4">Capabilities</h3>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-white tracking-tight">How We Build</h2>
+        <h3 className="text-xs font-bold tracking-widest text-studio-red uppercase mb-4">{dict.capabilities.badge}</h3>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-white tracking-tight">{dict.capabilities.title}</h2>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12">

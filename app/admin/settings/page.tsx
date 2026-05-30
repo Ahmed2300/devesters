@@ -1,6 +1,8 @@
 import { createClient } from '@/lib/supabase/server';
 import SettingsClient from './Client';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminSettings() {
   const supabase = await createClient();
   

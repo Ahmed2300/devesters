@@ -6,28 +6,32 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-
-const navLinks = [
-  { name: 'Work', href: '/' },
-  { name: 'Services', href: '/services' },
-  { name: 'Process', href: '/process' },
-  { name: 'About', href: '/about' },
-  { name: 'Projects', href: '/projects' },
-  { name: 'Contact', href: '/contact' },
-];
+import { useLanguage } from '@/components/LanguageProvider';
+import { getDictionary } from '@/lib/i18n/dictionaries';
 
 export default function Navbar() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { locale, toggleLocale } = useLanguage();
+  const dict = getDictionary(locale);
 
   if (pathname.startsWith('/admin')) {
     return null;
   }
 
+  const navLinks = [
+    { name: dict.navbar.work, href: '/' },
+    { name: dict.navbar.services, href: '/services' },
+    { name: dict.navbar.process, href: '/process' },
+    { name: dict.navbar.about, href: '/about' },
+    { name: dict.navbar.projects, href: '/projects' },
+    { name: dict.navbar.contact, href: '/contact' },
+  ];
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#050509]/80 backdrop-blur-lg border-b border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-0 z-50">
+        <Link href="/" className="flex flex-row items-center gap-0 z-50" style={{ direction: 'ltr', display: 'flex', flexDirection: 'row' }}>
           <Image src="https://i.ibb.co/3Y0bCFgM/devesters-icon.png" alt="Devesters Logo" width={24} height={24} className="rounded-sm" referrerPolicy="no-referrer" />
           <span className="text-xl font-heading font-bold tracking-tight text-white -ml-0.5">EVesters</span>
         </Link>
@@ -57,9 +61,15 @@ export default function Navbar() {
           })}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden lg:flex items-center gap-4">
+          <button 
+            onClick={toggleLocale}
+            className="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-zinc-400 hover:text-white border border-white/10 hover:border-white/20 rounded-md bg-white/5 transition-colors cursor-pointer"
+          >
+            {locale === 'ar' ? 'EN' : 'العربية'}
+          </button>
           <Link href="/contact" className="inline-block px-5 py-2 text-sm font-medium text-white bg-transparent border border-studio-red rounded-full transition-colors hover:bg-studio-red cursor-pointer">
-            Get in Touch
+            {dict.navbar.getInTouch}
           </Link>
         </div>
 
@@ -99,8 +109,14 @@ export default function Navbar() {
                   </Link>
                 );
               })}
-              <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="mt-4 px-5 py-3 text-sm font-medium w-full text-center text-white bg-studio-red rounded-full transition-colors block cursor-pointer">
-                Get in Touch
+              <button 
+                onClick={() => { toggleLocale(); setIsMobileMenuOpen(false); }}
+                className="w-full px-5 py-3 text-sm font-medium text-center text-zinc-400 hover:text-white border border-white/10 rounded-full bg-white/5 transition-colors block cursor-pointer"
+              >
+                {locale === 'ar' ? 'English' : 'العربية'}
+              </button>
+              <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="px-5 py-3 text-sm font-medium w-full text-center text-white bg-studio-red rounded-full transition-colors block cursor-pointer">
+                {dict.navbar.getInTouch}
               </Link>
             </div>
           </motion.div>

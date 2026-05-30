@@ -1,6 +1,8 @@
 import { createClient } from '@/lib/supabase/server';
 import { Briefcase } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminInquiries() {
   const supabase = await createClient();
   const { data: inquiries, error } = await supabase.from('inquiries').select('*').order('created_at', { ascending: false });

@@ -1,8 +1,13 @@
 'use client';
 
 import { FormEvent } from 'react';
+import { useLanguage } from '@/components/LanguageProvider';
+import { getDictionary } from '@/lib/i18n/dictionaries';
 
 export default function ContactForm() {
+  const { locale } = useLanguage();
+  const dict = getDictionary(locale);
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -43,14 +48,14 @@ ${message}
           href="mailto:hello@devesters.com" 
           className="inline-flex items-center text-sm text-zinc-400 hover:text-white transition-colors"
         >
-          <span className="mr-2">Direct Email:</span> 
+          <span className={locale === 'ar' ? 'ml-2' : 'mr-2'}>{dict.contactPage.directEmail}</span> 
           <span className="font-medium underline decoration-white/20 underline-offset-4 pointer-events-auto">hello@devesters.com</span>
         </a>
         <a 
           href="tel:+201036178703" 
           className="inline-flex items-center text-sm text-zinc-400 hover:text-white transition-colors"
         >
-          <span className="mr-2">Mobile:</span> 
+          <span className={locale === 'ar' ? 'ml-2' : 'mr-2'}>{dict.contactPage.mobile}</span> 
           <span className="font-medium underline decoration-white/20 underline-offset-4 pointer-events-auto">+20 103 617 8703</span>
         </a>
       </div>
@@ -58,56 +63,56 @@ ${message}
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-xs font-medium text-zinc-400 uppercase mb-2">Your Name</label>
+            <label className="block text-xs font-medium text-zinc-400 uppercase mb-2">{dict.contactPage.formName}</label>
             <input 
               type="text" 
               name="name" 
               required
               className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-studio-red transition-colors"
-              placeholder="John Doe"
+              placeholder={dict.contactPage.placeholderName}
             />
           </div>
           <div>
-            <label className="block text-xs font-medium text-zinc-400 uppercase mb-2">Email Address</label>
+            <label className="block text-xs font-medium text-zinc-400 uppercase mb-2">{dict.contactPage.formEmail}</label>
             <input 
               type="email" 
               name="email" 
               required
               className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-studio-red transition-colors"
-              placeholder="john@example.com"
+              placeholder={dict.contactPage.placeholderEmail}
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-zinc-400 uppercase mb-2">Project Type</label>
+          <label className="block text-xs font-medium text-zinc-400 uppercase mb-2">{dict.contactPage.formProjectType}</label>
           <select 
             name="projectType"
             className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-studio-red transition-colors appearance-none"
           >
-            <option value="SaaS Platform" className="bg-[#050509]">SaaS Platform</option>
-            <option value="Mobile App" className="bg-[#050509]">Mobile App</option>
-            <option value="AI Integration" className="bg-[#050509]">AI Integration</option>
-            <option value="Other" className="bg-[#050509]">Other</option>
+            <option value="SaaS Platform" className="bg-[#050509]">{dict.contactPage.projectTypes.saas}</option>
+            <option value="Mobile App" className="bg-[#050509]">{dict.contactPage.projectTypes.mobile}</option>
+            <option value="AI Integration" className="bg-[#050509]">{dict.contactPage.projectTypes.ai}</option>
+            <option value="Other" className="bg-[#050509]">{dict.contactPage.projectTypes.other}</option>
           </select>
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-zinc-400 uppercase mb-2">Message</label>
+          <label className="block text-xs font-medium text-zinc-400 uppercase mb-2">{dict.contactPage.formMessage}</label>
           <textarea 
             name="message" 
             rows={5} 
             required
             className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-studio-red transition-colors resize-none"
-            placeholder="Tell us about your goals, timeline, and technical requirements..."
+            placeholder={dict.contactPage.placeholderMessage}
           />
         </div>
 
         <button 
           type="submit" 
-          className="bg-studio-red hover:bg-red-700 text-white font-medium py-3 px-6 rounded-lg transition-colors flex items-center justify-center w-full sm:w-auto"
+          className="bg-studio-red hover:bg-red-700 text-white font-medium py-3 px-6 rounded-lg transition-colors flex items-center justify-center w-full sm:w-auto cursor-pointer"
         >
-          Open Email Client →
+          {dict.contactPage.submitBtn} {locale === 'ar' ? '←' : '→'}
         </button>
       </form>
     </div>

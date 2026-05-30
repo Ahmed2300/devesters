@@ -35,7 +35,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* Sidebar */}
       <aside className="w-64 border-r border-white/10 bg-[#0a0a0f] flex flex-col hidden md:flex">
         <div className="h-16 flex items-center px-6 border-b border-white/10">
-          <Link href="/admin/dashboard" className="flex items-center gap-0 text-xl font-heading font-bold tracking-tight">
+          <Link href="/admin/dashboard" className="flex items-center gap-0 text-xl font-heading font-bold tracking-tight" style={{ direction: 'ltr', display: 'flex', flexDirection: 'row' }}>
             <Image src="https://i.ibb.co/3Y0bCFgM/devesters-icon.png" alt="Devesters Logo" width={24} height={24} className="rounded-sm" referrerPolicy="no-referrer" />
             <span className="text-white -ml-0.5">EVesters</span> <span className="text-zinc-500 font-normal ml-1">Admin</span>
           </Link>

@@ -2,18 +2,35 @@
 
 import { motion } from 'motion/react';
 import { Star } from 'lucide-react';
+import { useLanguage } from '@/components/LanguageProvider';
+import { getDictionary } from '@/lib/i18n/dictionaries';
 
 export default function Testimonials({ testimonials }: { testimonials: any[] }) {
-  // Duplicating the array to allow for a seamless infinite loop
-  const items = [...testimonials, ...testimonials];
+  const { locale } = useLanguage();
+  const dict = getDictionary(locale);
 
+  // Duplicating the array to allow for a seamless infinite loop
+  const rawItems = [...testimonials, ...testimonials];
+  
   if (!testimonials || testimonials.length === 0) return null;
+
+  const items = rawItems.map((item) => {
+    const translation = dict.testimonialsData[item.client_name];
+    if (translation) {
+      return {
+        ...item,
+        review: translation.review,
+        client_role: translation.role
+      };
+    }
+    return item;
+  });
 
   return (
     <section className="py-24 border-t border-white/5 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
-        <div className="text-xs font-bold tracking-widest text-studio-red uppercase mb-4">Client Feedback</div>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-white tracking-tight">Trusted by Partners</h2>
+        <div className="text-xs font-bold tracking-widest text-studio-red uppercase mb-4">{dict.testimonials.badge}</div>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-white tracking-tight">{dict.testimonials.title}</h2>
       </div>
 
       <div className="relative flex overflow-hidden group">
@@ -22,7 +39,7 @@ export default function Testimonials({ testimonials }: { testimonials: any[] }) 
         <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-[#050509] to-transparent z-10 pointer-events-none" />
 
         <motion.div
-          animate={{ x: ["0%", "-50%"] }}
+          animate={{ x: locale === 'ar' ? ["-50%", "0%"] : ["0%", "-50%"] }}
           transition={{
             duration: 40,
             ease: "linear",

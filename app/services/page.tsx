@@ -1,5 +1,7 @@
 import { Monitor, Smartphone, Cpu, Server, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { cookies } from 'next/headers';
+import { getDictionary } from '@/lib/i18n/dictionaries';
 import { 
   SiNextdotjs, 
   SiNodedotjs, 
@@ -31,10 +33,14 @@ const techIcons: Record<string, React.ElementType> = {
   'Supabase': SiSupabase,
   'AWS': FaAws,
   'Tailwind': SiTailwindcss,
-  'React.js': SiNextdotjs, // Using Next.js icon for React.js as well or SiReact if I import it
+  'React.js': SiNextdotjs,
 };
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const cookieStore = await cookies();
+  const locale = (cookieStore.get('locale')?.value || 'ar') as 'ar' | 'en';
+  const dict = getDictionary(locale);
+
   const renderTechPill = (tech: string) => {
     const Icon = techIcons[tech];
     return (
@@ -50,12 +56,12 @@ export default function ServicesPage() {
       {/* Hero Section */}
       <section className="mb-24">
         <div className="max-w-3xl">
-          <p className="text-studio-red font-bold tracking-wider text-sm uppercase mb-4">What We Do</p>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-mono font-bold tracking-tighter leading-tight text-white mb-6">
-            End-to-End Engineering,<br className="hidden sm:block" />From Idea to Deployment.
+          <p className="text-studio-red font-bold tracking-wider text-sm uppercase mb-4">{dict.servicesPage.badge}</p>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-mono font-bold tracking-tighter leading-tight text-white mb-6 whitespace-pre-line">
+            {dict.servicesPage.title}
           </h1>
           <p className="text-lg text-[#d4d4d8] leading-relaxed">
-            We don&apos;t hand off. We architect, build, and ship complete digital products. Precision engineering for teams that demand performance.
+            {dict.servicesPage.description}
           </p>
         </div>
       </section>
@@ -68,15 +74,15 @@ export default function ServicesPage() {
             <div className="bg-red-900/20 text-red-500 p-3 rounded-lg w-fit mb-6">
               <Monitor className="w-6 h-6" />
             </div>
-            <h3 className="text-2xl font-heading font-bold text-white mb-4">Web & SaaS Development</h3>
+            <h3 className="text-2xl font-heading font-bold text-white mb-4">{dict.servicesPage.webTitle}</h3>
             <p className="text-[#d4d4d8] mb-8 flex-grow">
-              We architect and deploy heavy-duty platforms using Next.js — from complex payment gateways to custom LMS infrastructure.
+              {dict.servicesPage.webDesc}
             </p>
             <div className="flex flex-wrap gap-2 mb-6">
               {['Next.js', 'Node.js', 'Firebase', 'PostgreSQL'].map(tech => renderTechPill(tech))}
             </div>
-            <Link href="/work/soubul" className="text-sm text-[#d4d4d8] hover:text-white transition-colors flex items-center gap-2 mt-auto">
-              <span className="text-studio-red">↳</span> View Soubul LMS
+            <Link href="/projects" className="text-sm text-[#d4d4d8] hover:text-white transition-colors flex items-center gap-2 mt-auto">
+              <span className="text-studio-red">↳</span> {dict.servicesPage.viewSoubul}
             </Link>
           </div>
 
@@ -85,9 +91,9 @@ export default function ServicesPage() {
             <div className="bg-red-900/20 text-red-500 p-3 rounded-lg w-fit mb-6">
               <Smartphone className="w-6 h-6" />
             </div>
-            <h3 className="text-2xl font-heading font-bold text-white mb-4">Cross-Platform Mobile (Flutter)</h3>
+            <h3 className="text-2xl font-heading font-bold text-white mb-4">{dict.servicesPage.mobileTitle}</h3>
             <p className="text-[#d4d4d8] mb-8 flex-grow">
-              Natively compiled iOS & Android apps with a single codebase, delivering pixel-perfect UX on every device.
+              {dict.servicesPage.mobileDesc}
             </p>
             <div className="flex flex-wrap gap-2 mb-6 mt-auto">
               {['Flutter', 'Dart', 'REST APIs'].map(tech => renderTechPill(tech))}
@@ -99,15 +105,15 @@ export default function ServicesPage() {
             <div className="bg-red-900/20 text-red-500 p-3 rounded-lg w-fit mb-6">
               <Cpu className="w-6 h-6" />
             </div>
-            <h3 className="text-2xl font-heading font-bold text-white mb-4">AI Integration & LLM Tooling</h3>
+            <h3 className="text-2xl font-heading font-bold text-white mb-4">{dict.servicesPage.aiTitle}</h3>
             <p className="text-[#d4d4d8] mb-8 flex-grow">
-              We integrate practical large language models to solve real industry problems — not wrappers, actual products.
+              {dict.servicesPage.aiDesc}
             </p>
             <div className="flex flex-wrap gap-2 mb-6">
               {['Python', 'LangChain', 'OpenAI API', 'RAG'].map(tech => renderTechPill(tech))}
             </div>
-            <Link href="/work/naptah" className="text-sm text-[#d4d4d8] hover:text-white transition-colors flex items-center gap-2 mt-auto">
-              <span className="text-studio-red">↳</span> View Naptah Ecosystem
+            <Link href="/projects" className="text-sm text-[#d4d4d8] hover:text-white transition-colors flex items-center gap-2 mt-auto">
+              <span className="text-studio-red">↳</span> {dict.servicesPage.viewNaptah}
             </Link>
           </div>
 
@@ -116,9 +122,9 @@ export default function ServicesPage() {
             <div className="bg-red-900/20 text-red-500 p-3 rounded-lg w-fit mb-6">
               <Server className="w-6 h-6" />
             </div>
-            <h3 className="text-2xl font-heading font-bold text-white mb-4">Backend & Infrastructure</h3>
+            <h3 className="text-2xl font-heading font-bold text-white mb-4">{dict.servicesPage.infraTitle}</h3>
             <p className="text-[#d4d4d8] mb-8 flex-grow">
-              Scalable, battle-tested backends. We&apos;ve built for load — databases, queues, auth, and server-side architecture.
+              {dict.servicesPage.infraDesc}
             </p>
             <div className="flex flex-wrap gap-2 mb-6 mt-auto">
               {['Laravel', 'Firebase', 'Node.js', 'Supabase'].map(tech => renderTechPill(tech))}
@@ -129,7 +135,7 @@ export default function ServicesPage() {
 
       {/* How We Work Timeline */}
       <section className="mb-32">
-        <h2 className="text-3xl font-heading font-bold text-white mb-16 text-center">How We Work</h2>
+        <h2 className="text-3xl font-heading font-bold text-white mb-16 text-center">{dict.servicesPage.howWeWork}</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
           {/* Connecting Line (Desktop only) */}
           <div className="hidden md:block absolute top-6 left-[16%] right-[16%] h-[1px] bg-white/10 -z-10" />
@@ -138,24 +144,24 @@ export default function ServicesPage() {
             <div className="w-12 h-12 rounded-full bg-[#050509] border border-studio-red text-studio-red flex items-center justify-center font-bold mb-6 shadow-[0_0_15px_rgba(220,38,38,0.2)]">
               1
             </div>
-            <h4 className="text-xl font-bold text-white mb-3">Discovery & Architecture</h4>
-            <p className="text-[#d4d4d8] text-sm leading-relaxed max-w-xs">Mapping the business logic, defining the tech stack, and planning the architecture before writing a single line of code.</p>
+            <h4 className="text-xl font-bold text-white mb-3">{dict.servicesPage.howWeWorkSteps[0].title}</h4>
+            <p className="text-[#d4d4d8] text-sm leading-relaxed max-w-xs">{dict.servicesPage.howWeWorkSteps[0].desc}</p>
           </div>
           
           <div className="flex flex-col items-center text-center">
             <div className="w-12 h-12 rounded-full bg-[#050509] border border-studio-red text-studio-red flex items-center justify-center font-bold mb-6 shadow-[0_0_15px_rgba(220,38,38,0.2)]">
               2
             </div>
-            <h4 className="text-xl font-bold text-white mb-3">Agile Engineering</h4>
-            <p className="text-[#d4d4d8] text-sm leading-relaxed max-w-xs">Iterative sprints, transparent communication, and continuous delivery. You see the product taking shape every week.</p>
+            <h4 className="text-xl font-bold text-white mb-3">{dict.servicesPage.howWeWorkSteps[1].title}</h4>
+            <p className="text-[#d4d4d8] text-sm leading-relaxed max-w-xs">{dict.servicesPage.howWeWorkSteps[1].desc}</p>
           </div>
           
           <div className="flex flex-col items-center text-center">
             <div className="w-12 h-12 rounded-full bg-[#050509] border border-studio-red text-studio-red flex items-center justify-center font-bold mb-6 shadow-[0_0_15px_rgba(220,38,38,0.2)]">
               3
             </div>
-            <h4 className="text-xl font-bold text-white mb-3">Deployment & Scale</h4>
-            <p className="text-[#d4d4d8] text-sm leading-relaxed max-w-xs">Shipping the product to production, setting up CI/CD pipelines, and ensuring the infrastructure is ready to scale.</p>
+            <h4 className="text-xl font-bold text-white mb-3">{dict.servicesPage.howWeWorkSteps[2].title}</h4>
+            <p className="text-[#d4d4d8] text-sm leading-relaxed max-w-xs">{dict.servicesPage.howWeWorkSteps[2].desc}</p>
           </div>
         </div>
       </section>
@@ -164,16 +170,16 @@ export default function ServicesPage() {
       <section className="relative py-24 rounded-3xl overflow-hidden border border-white/5">
         <div className="absolute inset-0 bg-gradient-to-t from-red-950/40 to-transparent -z-10" />
         <div className="flex flex-col items-center text-center px-6">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white mb-6">Ready to Build?</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white mb-6">{dict.servicesPage.readyTitle}</h2>
           <p className="text-lg text-[#d4d4d8] mb-10 max-w-2xl">
-            Tell us what you&apos;re making. We&apos;ll tell you how we&apos;d build it.
+            {dict.servicesPage.readyDesc}
           </p>
           <Link 
             href="/contact" 
             className="group px-8 py-4 text-sm font-medium text-white bg-studio-red rounded-full shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:shadow-[0_0_30px_rgba(220,38,38,0.6)] transition-all flex items-center gap-2"
           >
-            Start a Project
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            {dict.servicesPage.startProject}
+            <ArrowRight className={`w-4 h-4 transition-transform ${locale === 'ar' ? 'rotate-180 group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`} />
           </Link>
         </div>
       </section>

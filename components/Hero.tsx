@@ -5,14 +5,8 @@ import { motion } from 'motion/react';
 import Link from 'next/link';
 import { SiNextdotjs, SiReact, SiFlutter, SiNodedotjs, SiPython, SiPhp, SiLaravel, SiDart, SiGo } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa';
-
-const phrases = [
-  { highlight: 'Define', rest: 'Tomorrow.' },
-  { highlight: 'Scale', rest: 'Businesses.' },
-  { highlight: 'Automate', rest: 'Workflows.' },
-  { highlight: 'Drive', rest: 'Innovation.' },
-  { highlight: 'Empower', rest: 'Users.' },
-];
+import { useLanguage } from '@/components/LanguageProvider';
+import { getDictionary } from '@/lib/i18n/dictionaries';
 
 const techStack = [
   { name: "Next.js", icon: SiNextdotjs },
@@ -28,6 +22,10 @@ const techStack = [
 ];
 
 function TypewriterText() {
+  const { locale } = useLanguage();
+  const dict = getDictionary(locale);
+  const phrases = dict.hero.typewriterPhrases;
+
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
@@ -60,7 +58,7 @@ function TypewriterText() {
       }
     }
     return () => clearTimeout(timer);
-  }, [text, isDeleting, loopNum]);
+  }, [text, isDeleting, loopNum, phrases]);
 
   const words = text.split(' ');
   const highlightWord = words[0] || '';
@@ -69,7 +67,7 @@ function TypewriterText() {
 
   return (
     <span className="whitespace-normal sm:whitespace-nowrap text-center">
-      That{' '}
+      {dict.hero.typewriterPrefix}{' '}
       <span className="text-studio-red italic font-mono">{highlightWord}</span>
       {hasSpace ? ' ' : ''}
       {restWords}
@@ -79,6 +77,9 @@ function TypewriterText() {
 }
 
 export default function Hero() {
+  const { locale } = useLanguage();
+  const dict = getDictionary(locale);
+
   return (
     <section className="relative min-h-[85vh] flex flex-col items-center justify-center pt-20 overflow-hidden">
       {/* Radial Gradient Background */}
@@ -88,20 +89,20 @@ export default function Hero() {
         <div
           className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-wider text-studio-red uppercase border border-studio-red/20 rounded-full bg-studio-red/5"
         >
-          Cairo-Based Studio · Est. 2024
+          {dict.hero.badge}
         </div>
 
         <h1
           className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tight text-white mb-6 leading-tight flex flex-col items-center"
         >
-          <span className="whitespace-normal sm:whitespace-nowrap text-center">We Build the Products</span>
+          <span className="whitespace-normal sm:whitespace-nowrap text-center">{dict.hero.title1}</span>
           <TypewriterText />
         </h1>
 
         <p
           className="text-lg md:text-xl text-[#d4d4d8] mb-10 max-w-2xl mx-auto"
         >
-          Full-stack platforms, SaaS tools, cross-platform mobile apps, and AI integrations — engineered to scale from day one.
+          {dict.hero.description}
         </p>
 
         <div
@@ -111,13 +112,13 @@ export default function Hero() {
             href="/contact"
             className="inline-block px-8 py-3.5 text-sm font-medium text-center text-white bg-studio-red rounded-full shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:shadow-[0_0_30px_rgba(220,38,38,0.6)] hover:scale-[1.03] active:scale-[0.98] transition-all w-full sm:w-auto"
           >
-            Contact Us
+            {dict.hero.contactBtn}
           </Link>
           <Link 
             href="/projects" 
             className="inline-block px-8 py-3.5 text-sm font-medium text-center text-white bg-transparent rounded-full border border-white/10 hover:border-white/30 transition-colors w-full sm:w-auto group relative overflow-hidden"
           >
-            <span className="relative z-10">Projects</span>
+            <span className="relative z-10">{dict.hero.projectsBtn}</span>
             <span className="absolute bottom-0 left-0 w-full h-[1px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
           </Link>
         </div>
@@ -133,7 +134,7 @@ export default function Hero() {
           <div className="absolute inset-y-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-[#050509] to-transparent z-10 pointer-events-none" />
           
           <motion.div
-            animate={{ x: ["0%", "-50%"] }}
+            animate={{ x: locale === 'ar' ? ["-50%", "0%"] : ["0%", "-50%"] }}
             transition={{
               repeat: Infinity,
               ease: "linear",

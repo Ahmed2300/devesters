@@ -7,6 +7,8 @@ import { cn } from '@/lib/utils';
 import { SiTypescript, SiReact, SiNextdotjs, SiPython, SiFlutter, SiDart, SiOpenai } from 'react-icons/si';
 import { VscFolder, VscFolderOpened, VscFileCode } from 'react-icons/vsc';
 import { Highlight, themes } from 'prism-react-renderer';
+import { useLanguage } from '@/components/LanguageProvider';
+import { getDictionary } from '@/lib/i18n/dictionaries';
 
 // Types
 type UIVariant = {
@@ -348,7 +350,7 @@ const TypewriterCode = ({ code, language }: { code: string, language: string }) 
   }, [code]);
 
   return (
-    <div className="font-mono text-[13px] leading-relaxed relative">
+    <div className="font-mono text-[13px] leading-relaxed relative" style={{ direction: 'ltr', textAlign: 'left' }}>
        <Highlight theme={themes.vsDark} code={displayedText} language={language}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre style={{ ...style, backgroundColor: 'transparent', margin: 0 }}>
@@ -400,6 +402,9 @@ const FileTree = ({ files, depth = 0 }: { files: ProjectFile[], depth?: number }
 };
 
 export default function InfinityCodeSection() {
+  const { locale } = useLanguage();
+  const dict = getDictionary(locale);
+
   const [scenarioIndex, setScenarioIndex] = useState(0);
   const [variantIndices, setVariantIndices] = useState<number[]>(SCENARIOS.map(() => 0));
 
@@ -426,6 +431,13 @@ export default function InfinityCodeSection() {
   const activeScenario = SCENARIOS[scenarioIndex];
   const activeVariant = activeScenario.uiVariants[variantIndices[scenarioIndex]];
 
+  // Localized Scenario Titles
+  const scenarioTitles: Record<string, string> = {
+    web: locale === 'ar' ? 'منصة ويب (Next.js)' : 'Web Platform (Next.js)',
+    mobile: locale === 'ar' ? 'تطبيق جوال (Flutter)' : 'Mobile App (Flutter)',
+    ai: locale === 'ar' ? 'ذكاء اصطناعي (Python)' : 'AI Native (Python)',
+  };
+
   return (
     <section className="relative py-24 sm:py-32 overflow-hidden bg-background border-y border-white/5">
       {/* Background glow effects based on active scenario */}
@@ -441,7 +453,9 @@ export default function InfinityCodeSection() {
             className="flex items-center gap-2 mb-4"
           >
             <Code2 className="w-5 h-5 text-studio-red" />
-            <span className="text-sm font-mono text-studio-red uppercase tracking-wider">Concept to Reality</span>
+            <span className="text-sm font-mono text-studio-red uppercase tracking-wider">
+              {locale === 'ar' ? 'من الفكرة إلى الواقع' : 'Concept to Reality'}
+            </span>
           </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -450,29 +464,31 @@ export default function InfinityCodeSection() {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl font-medium tracking-tight mb-4"
           >
-            The Infinity <span className="text-transparent bg-clip-text bg-gradient-to-r from-studio-red to-orange-500 italic">Code</span>
+            {locale === 'ar' ? 'كود ' : 'The Infinity '}<span className="text-transparent bg-clip-text bg-gradient-to-r from-studio-red to-orange-500 italic">{locale === 'ar' ? 'اللانهاية' : 'Code'}</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-gray-400 text-lg"
+            className="text-gray-400 text-lg leading-relaxed"
           >
-            Watch as logic translates instantly into various digital targets.
-            Dynamic interfaces. Seamless conversion. Powerful experiences.
+            {locale === 'ar' 
+              ? 'شاهد كيف يترجم المنطق فورياً إلى أهداف رقمية متنوعة. واجهات تفاعلية. تحويل سلس. تجارب مستخدم قوية.' 
+              : 'Watch as logic translates instantly into various digital targets. Dynamic interfaces. Seamless conversion. Powerful experiences.'}
           </motion.p>
         </div>
 
         {/* IDE Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_400px] gap-8 lg:gap-12 items-stretch">
           
-          {/* Left Column: The IDE (Sidebar + Editor) */}
+          {/* Left Column: The IDE (Sidebar + Editor) - Forced LTR */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="relative h-[480px] w-full bg-[#1e1e1e] border border-white/10 rounded-2xl overflow-hidden shadow-2xl flex flex-col group"
+            style={{ direction: 'ltr' }}
           >
              {/* IDE Header (Title Bar) */}
              <div className="h-10 bg-[#252526] border-b border-[#303030] flex items-center px-4 gap-4 select-none">
@@ -493,7 +509,7 @@ export default function InfinityCodeSection() {
                 {/* File Explorer Sidebar */}
                 <div className="w-52 bg-[#252526] border-r border-[#303030] flex flex-col select-none overflow-y-auto">
                    <div className="px-4 py-3 text-[10px] uppercase tracking-widest text-[#cccccc] font-semibold font-mono">
-                     Explorer
+                     {locale === 'ar' ? 'المستكشف' : 'Explorer'}
                    </div>
                    <div className="pb-2">
                      <AnimatePresence mode="wait">
@@ -547,18 +563,18 @@ export default function InfinityCodeSection() {
              </div>
           </motion.div>
 
-          {/* Center Connector (Arrow) */}
+          {/* Center Connector (Arrow) - RTL Mirrored flow */}
           <div className="flex flex-col items-center justify-center py-4 lg:py-0">
              <div className="hidden lg:block w-px h-16 bg-gradient-to-b from-transparent to-white/20 mb-4" />
              <div className="relative group flex items-center justify-center w-16 h-16 rounded-full bg-white/5 border border-white/10 backdrop-blur-md overflow-hidden">
                 <motion.div 
-                   animate={{ x: [-30, 30], opacity: [0, 1, 0] }}
+                   animate={{ x: locale === 'ar' ? [30, -30] : [-30, 30], opacity: [0, 1, 0] }}
                    transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
                    className={cn("absolute", activeScenario.color)}
                 >
-                   <ArrowRight className="w-6 h-6 rotate-90 lg:rotate-0" />
+                   <ArrowRight className={cn("w-6 h-6 rotate-90", locale === 'ar' ? "lg:rotate-180" : "lg:rotate-0")} />
                 </motion.div>
-                <ArrowRight className="w-6 h-6 text-gray-600 rotate-90 lg:rotate-0 -z-10 absolute" />
+                <ArrowRight className={cn("w-6 h-6 text-gray-600 rotate-90 -z-10 absolute", locale === 'ar' ? "lg:rotate-180" : "lg:rotate-0")} />
              </div>
              <div className="hidden lg:block w-px h-16 bg-gradient-to-t from-transparent to-white/20 mt-4" />
           </div>
@@ -585,7 +601,9 @@ export default function InfinityCodeSection() {
                 </AnimatePresence>
                 
                 <div className="flex flex-col">
-                  <span className="text-[10px] uppercase tracking-wider text-gray-500 font-mono">Output Render</span>
+                  <span className="text-[10px] uppercase tracking-wider text-gray-500 font-mono">
+                    {locale === 'ar' ? 'معاينة المخرجات' : 'Output Render'}
+                  </span>
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={activeScenario.id + '-title'}
@@ -594,14 +612,14 @@ export default function InfinityCodeSection() {
                       exit={{ opacity: 0, y: -10 }}
                       className={cn("font-medium text-sm", activeScenario.color)}
                     >
-                      {activeScenario.title}
+                      {scenarioTitles[activeScenario.id] || activeScenario.title}
                     </motion.div>
                   </AnimatePresence>
                 </div>
              </div>
              
-             {/* The Dynamic Canvas */}
-             <div className="flex-1 relative bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center p-4">
+             {/* The Dynamic Canvas - Forced LTR for graphic content */}
+             <div className="flex-1 relative bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center p-4" style={{ direction: 'ltr' }}>
                 {/* Background grid */}
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_20%,transparent_100%)] pointer-events-none" />
                 

@@ -9,6 +9,11 @@
   --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+[lang="ar"] {
+  --font-sans: var(--font-cairo), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-cairo), ui-sans-serif, system-ui, sans-serif;
+}
+
 body {
   background-color: var(--color-background);
   color: #ffffff;
