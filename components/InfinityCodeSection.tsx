@@ -189,19 +189,19 @@ class DevestersApp extends StatelessWidget {
 }`,
     uiVariants: [
       {
-        themeColor: 'orange',
+        themeColor: 'red',
         element: (
           <div className="flex items-center justify-center h-full w-full relative">
-             <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="w-[180px] h-[320px] rounded-[24px] border-[6px] border-[#1a1a1a] bg-black shadow-[0_0_20px_rgba(249,115,22,0.15)] relative overflow-hidden flex flex-col">
+             <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="w-[180px] h-[320px] rounded-[24px] border-[6px] border-[#1a1a1a] bg-black shadow-[0_0_20px_rgba(239,68,68,0.15)] relative overflow-hidden flex flex-col">
                 <div className="absolute top-0 inset-x-0 h-5 flex justify-center z-10"><div className="w-12 h-3.5 bg-[#1a1a1a] rounded-b-lg" /></div>
-                <div className="flex-1 bg-gradient-to-b from-orange-500/20 to-black p-3 pt-8 flex flex-col gap-3 relative">
-                   <div className="absolute top-10 right-0 w-24 h-24 bg-orange-500/30 blur-[20px] rounded-full" />
-                   <div className="h-10 w-10 rounded-full bg-orange-500/40 border border-orange-500/50 backdrop-blur-md mb-2" />
+                <div className="flex-1 bg-gradient-to-b from-red-500/20 to-black p-3 pt-8 flex flex-col gap-3 relative">
+                   <div className="absolute top-10 right-0 w-24 h-24 bg-red-500/30 blur-[20px] rounded-full" />
+                   <div className="h-10 w-10 rounded-full bg-red-500/40 border border-red-500/50 backdrop-blur-md mb-2" />
                    <div className="h-5 w-24 bg-white/20 rounded" />
                    <div className="h-3 w-16 bg-white/10 rounded mb-2" />
                    <div className="flex gap-2">
                       <motion.div initial={{ scale: 0.8 }} animate={{ scale: 1 }} className="h-16 flex-1 rounded-xl bg-white/10 border border-white/5" />
-                      <motion.div initial={{ scale: 0.8 }} animate={{ scale: 1 }} transition={{ delay: 0.1 }} className="h-16 flex-1 rounded-xl bg-orange-500/20 border border-orange-500/30" />
+                      <motion.div initial={{ scale: 0.8 }} animate={{ scale: 1 }} transition={{ delay: 0.1 }} className="h-16 flex-1 rounded-xl bg-red-500/20 border border-red-500/30" />
                    </div>
                 </div>
              </motion.div>
@@ -464,7 +464,7 @@ export default function InfinityCodeSection() {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl font-medium tracking-tight mb-4"
           >
-            {locale === 'ar' ? 'كود ' : 'The Infinity '}<span className="text-transparent bg-clip-text bg-gradient-to-r from-studio-red to-orange-500 italic">{locale === 'ar' ? 'اللانهاية' : 'Code'}</span>
+            {locale === 'ar' ? 'كود ' : 'The Infinity '}<span className="text-transparent bg-clip-text bg-gradient-to-r from-studio-red to-red-600 italic">{locale === 'ar' ? 'اللانهاية' : 'Code'}</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}

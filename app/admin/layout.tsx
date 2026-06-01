@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, Briefcase, MessageSquare, Folders, LogOut, Settings } from 'lucide-react';
+import { LayoutDashboard, Briefcase, MessageSquare, Folders, LogOut, Settings, User, Trophy } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 
@@ -24,6 +24,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   const navItems = [
     { name: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
+    { name: 'Gamification', href: '/admin/gamification', icon: Trophy },
+    { name: 'My Profile', href: '/admin/profile', icon: User },
     { name: 'Projects', href: '/admin/projects', icon: Folders },
     { name: 'Testimonials', href: '/admin/testimonials', icon: MessageSquare },
     { name: 'Inquiries', href: '/admin/inquiries', icon: Briefcase },
@@ -31,7 +33,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   ];
 
   return (
-    <div className="min-h-screen bg-[#050509] text-white flex">
+    <div className="min-h-screen bg-[#050509] text-white flex" dir="ltr">
       {/* Sidebar */}
       <aside className="w-64 border-r border-white/10 bg-[#0a0a0f] flex flex-col hidden md:flex">
         <div className="h-16 flex items-center px-6 border-b border-white/10">
