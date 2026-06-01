@@ -22,7 +22,8 @@ import {
   CheckCheck,
   X,
   Plus,
-  Trash2
+  Trash2,
+  HelpCircle
 } from 'lucide-react';
 import * as FiIcons from 'react-icons/fi';
 import { getLevelProgress } from '@/lib/utils';
@@ -61,6 +62,8 @@ interface Task {
   category: string;
   xp_value: number;
   badge_reward_id: string | null;
+  how_to_achieve_en?: string | null;
+  how_to_achieve_ar?: string | null;
 }
 
 interface Badge {
@@ -131,11 +134,16 @@ export default function GamificationClient({
   const [taskXpValue, setTaskXpValue] = useState(100);
   const [taskBadgeRewardId, setTaskBadgeRewardId] = useState('');
   const [taskAssignTo, setTaskAssignTo] = useState('none');
+  const [taskHowToEn, setTaskHowToEn] = useState('');
+  const [taskHowToAr, setTaskHowToAr] = useState('');
   const [isCreatingTask, setIsCreatingTask] = useState(false);
   const [taskResult, setTaskResult] = useState<any>(null);
   const [taskError, setTaskError] = useState('');
   const [allTasksList, setAllTasksList] = useState<Task[]>(allTasks);
   const [deletingTaskId, setDeletingTaskId] = useState<string | null>(null);
+  
+  // Custom Task toggle-state for How To Achieve instructions
+  const [expandedTaskHowTo, setExpandedTaskHowTo] = useState<Record<string, boolean>>({});
   
   // Create mapping of member ID -> tasks status
   const initialTasksMap: Record<string, { taskId: string; isCompleted: boolean }[]> = {};
@@ -351,6 +359,8 @@ export default function GamificationClient({
           xpValue: Number(taskXpValue),
           badgeRewardId: taskBadgeRewardId || null,
           assignTo: taskAssignTo,
+          howToAchieveEn: taskHowToEn.trim() || null,
+          howToAchieveAr: taskHowToAr.trim() || null,
         })
       });
 
@@ -371,6 +381,8 @@ export default function GamificationClient({
         category: taskCategory,
         xp_value: Number(taskXpValue),
         badge_reward_id: taskBadgeRewardId || null,
+        how_to_achieve_en: taskHowToEn.trim() || null,
+        how_to_achieve_ar: taskHowToAr.trim() || null,
       };
 
       setAllTasksList(prev => [...prev, newTaskObj]);
@@ -398,6 +410,8 @@ export default function GamificationClient({
       setTaskDescAr('');
       setTaskBadgeRewardId('');
       setTaskAssignTo('none');
+      setTaskHowToEn('');
+      setTaskHowToAr('');
       
       router.refresh();
     } catch (err: any) {
@@ -797,6 +811,33 @@ export default function GamificationClient({
             </div>
           </div>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* How to Achieve English */}
+            <div className="space-y-2">
+              <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider">How To Achieve Instructions (English)</label>
+              <textarea
+                value={taskHowToEn}
+                onChange={e => setTaskHowToEn(e.target.value)}
+                rows={2}
+                placeholder="Explain the step-by-step instructions of how to do/achieve this task..."
+                className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-red-500/30 focus:ring-1 focus:ring-red-500/20 transition-all resize-none"
+              />
+            </div>
+
+            {/* How to Achieve Arabic */}
+            <div className="space-y-2">
+              <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider">How To Achieve Instructions (Arabic)</label>
+              <textarea
+                value={taskHowToAr}
+                onChange={e => setTaskHowToAr(e.target.value)}
+                rows={2}
+                placeholder="اشرح الخطوات أو التوجيهات اللازمة لإنجاز هذه المهمة بنجاح..."
+                dir="rtl"
+                className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-red-500/30 focus:ring-1 focus:ring-red-500/20 transition-all resize-none"
+              />
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             {/* Category Select */}
             <div className="space-y-2">
@@ -1146,15 +1187,51 @@ export default function GamificationClient({
                               
                               {/* Title & Localized Info */}
                               <div>
-                                <h4 className={`font-bold text-sm leading-tight ${
-                                  isCompleted ? 'text-white' : 'text-zinc-400'
-                                }`}>
-                                  {task.title_en}
-                                </h4>
+                                <div className="flex items-center gap-2 flex-wrap">
+                                  <h4 className={`font-bold text-sm leading-tight ${
+                                    isCompleted ? 'text-white' : 'text-zinc-400'
+                                  }`}>
+                                    {task.title_en}
+                                  </h4>
+                                  {(task.how_to_achieve_en || task.how_to_achieve_ar) && (
+                                    <button
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        setExpandedTaskHowTo(prev => ({
+                                          ...prev,
+                                          [task.id]: !prev[task.id]
+                                        }));
+                                      }}
+                                      className={`p-0.5 rounded transition-all duration-200 ${
+                                        expandedTaskHowTo[task.id]
+                                          ? 'text-amber-400 bg-amber-500/10'
+                                          : 'text-zinc-500 hover:text-amber-400 hover:bg-white/5'
+                                      }`}
+                                      title="View guidelines on how to achieve this task"
+                                    >
+                                      <HelpCircle className="w-3.5 h-3.5" />
+                                    </button>
+                                  )}
+                                </div>
                                 <p className="text-zinc-500 text-[10px] font-semibold mt-0.5" dir="rtl">
                                   {task.title_ar}
                                 </p>
                                 <p className="text-zinc-400 text-xs mt-1.5 leading-normal">{task.description_en}</p>
+                                
+                                {expandedTaskHowTo[task.id] && (
+                                  <div className="mt-3 p-3.5 bg-gradient-to-r from-amber-500/[0.02] to-amber-600/[0.01] border border-amber-500/10 rounded-xl space-y-2 animate-in fade-in slide-in-from-top-1 duration-200">
+                                    <div className="flex items-center gap-1.5 text-[10px] font-black text-amber-400 uppercase tracking-widest">
+                                      <HelpCircle className="w-3.5 h-3.5 text-amber-500" />
+                                      <span>How to achieve / تعليمات الإنجاز</span>
+                                    </div>
+                                    {task.how_to_achieve_en && (
+                                      <p className="text-zinc-300 text-xs leading-relaxed font-normal">{task.how_to_achieve_en}</p>
+                                    )}
+                                    {task.how_to_achieve_ar && (
+                                      <p className="text-zinc-400 text-xs leading-relaxed text-right font-medium" dir="rtl">{task.how_to_achieve_ar}</p>
+                                    )}
+                                  </div>
+                                )}
                                 
                                 <div className="flex items-center gap-2 mt-2">
                                   <span className="px-2 py-0.5 text-[8px] bg-black/40 text-zinc-500 font-bold border border-white/5 rounded-md">
