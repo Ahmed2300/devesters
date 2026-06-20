@@ -21,7 +21,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
         <div className="col-span-1 md:col-span-2 flex flex-col items-start justify-start">
           <Link href="/" className="flex flex-row items-center gap-0 mb-6" style={{ direction: 'ltr', display: 'flex', flexDirection: 'row' }}>
-            <Image src="https://i.ibb.co/3Y0bCFgM/devesters-icon.png" alt="Devesters Logo" width={24} height={24} className="rounded-sm" referrerPolicy="no-referrer" />
+            <Image src="/devesters_icon.png" alt="Devesters Logo" width={24} height={24} className="rounded-sm" />
             <span className="text-xl font-heading font-bold tracking-tight text-white -ml-0.5">EVesters</span>
           </Link>
           <p className="text-xs text-[#d4d4d8]/60 max-w-xs uppercase tracking-wider leading-relaxed text-start">

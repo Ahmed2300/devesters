@@ -127,7 +127,7 @@ function buildEmailTemplate(subject, bodyContent, memberName) {
             '<table role="presentation" cellpadding="0" cellspacing="0">' +
               '<tr>' +
                 '<td style="vertical-align:middle;padding-right:6px;">' +
-                  '<img src="https://i.ibb.co/3Y0bCFgM/devesters-icon.png" alt="D" width="22" height="22" style="display:block;border-radius:3px;" />' +
+                  '<img src="https://devesters.com/devesters_icon.png" alt="D" width="22" height="22" style="display:block;border-radius:3px;" />' +
                 '</td>' +
                 '<td style="vertical-align:middle;color:#ffffff;font-size:18px;font-weight:bold;letter-spacing:-0.5px;line-height:22px;">' +
                   'EVesters' +

@@ -88,7 +88,7 @@ const organizationSchema = {
   "@type": "ProfessionalService",
   "name": "Devesters",
   "alternateName": ["Devsters", "Devstrs", "Devesetrs"],
-  "image": "https://i.ibb.co/3Y0bCFgM/devesters-icon.png",
+  "image": "https://devesters.com/devesters_icon.png",
   "url": "https://devesters.com",
   "description": "Premium software engineering collective specializing in SaaS platforms, Flutter mobile apps, and AI integrations.",
   "address": {
