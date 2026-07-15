@@ -5,10 +5,6 @@ import ServicesSection from '@/components/ServicesSection';
 import { cookies } from 'next/headers';
 import { getDictionary } from '@/lib/i18n/dictionaries';
 
-const InfinityCodeSection = dynamic(() => import('@/components/InfinityCodeSection'), {
-  loading: () => <div className="h-[600px] w-full flex items-center justify-center bg-black/20 animate-pulse rounded-3xl" />
-});
-
 const BentoGrid = dynamic(() => import('@/components/BentoGrid'));
 const Capabilities = dynamic(() => import('@/components/Capabilities'));
 const Testimonials = dynamic(() => import('@/components/Testimonials'));
@@ -45,7 +41,6 @@ export default async function Home() {
     <main className="min-h-screen">
       <Hero />
       <ServicesSection />
-      <InfinityCodeSection />
       <BentoGrid projects={bentoProjects} />
       <Capabilities />
       <Testimonials testimonials={testimonialsData || []} />

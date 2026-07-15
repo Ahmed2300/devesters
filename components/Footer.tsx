@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { FiGithub, FiLinkedin, FiFacebook, FiMail } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiFacebook, FiInstagram, FiMail } from 'react-icons/fi';
 import { useLanguage } from '@/components/LanguageProvider';
 import { getDictionary } from '@/lib/i18n/dictionaries';
 
@@ -50,6 +50,9 @@ export default function Footer() {
             </a>
             <a href="https://www.facebook.com/profile.php?id=61568971049547" target="_blank" rel="noopener noreferrer" className="text-[#d4d4d8] hover:text-white transition-colors" aria-label="Facebook">
               <FiFacebook className="w-5 h-5" />
+            </a>
+            <a href="https://www.instagram.com/devesters.eg/" target="_blank" rel="noopener noreferrer" className="text-[#d4d4d8] hover:text-white transition-colors" aria-label="Instagram">
+              <FiInstagram className="w-5 h-5" />
             </a>
             <a href="mailto:hello@devesters.com" className="text-[#d4d4d8] hover:text-white transition-colors" aria-label="Email">
               <FiMail className="w-5 h-5" />

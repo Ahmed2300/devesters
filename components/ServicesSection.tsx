@@ -38,11 +38,10 @@ export default function ServicesSection() {
               </div>
               
               <Image 
-                src="https://i.ibb.co/tMWmNTFH/89ddb762e6f4.jpg" 
+                src="/websites.png" 
                 alt="Web & SaaS Development" 
                 fill 
                 className="object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
-                referrerPolicy="no-referrer"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
@@ -69,11 +68,10 @@ export default function ServicesSection() {
               </div>
               
               <Image 
-                src="https://i.ibb.co/ynGS48HJ/e69cc6a9e314.jpg" 
+                src="/apps.png" 
                 alt="Cross-Platform Mobile Engineering" 
                 fill 
                 className="object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
-                referrerPolicy="no-referrer"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
@@ -99,11 +97,10 @@ export default function ServicesSection() {
               </div>
               
               <Image 
-                src="https://i.ibb.co/JXqn8VN/8e4854b9ddc0.jpg" 
+                src="/llm_ai.png" 
                 alt="AI Integration & LLM Tooling" 
                 fill 
                 className="object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
-                referrerPolicy="no-referrer"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
