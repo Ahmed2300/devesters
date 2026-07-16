@@ -35,7 +35,6 @@ export default function Footer() {
             <li><Link href="/" className="text-sm text-[#d4d4d8] hover:text-white transition-colors uppercase tracking-wider text-[10px] font-bold">{dict.navbar.work}</Link></li>
             <li><Link href="/services" className="text-sm text-[#d4d4d8] hover:text-white transition-colors uppercase tracking-wider text-[10px] font-bold">{dict.navbar.services}</Link></li>
             <li><Link href="/process" className="text-sm text-[#d4d4d8] hover:text-white transition-colors uppercase tracking-wider text-[10px] font-bold">{dict.navbar.process}</Link></li>
-            <li><Link href="/admin/login" className="text-sm text-[#d4d4d8] hover:text-white transition-colors uppercase tracking-wider text-[10px] font-bold">Admin</Link></li>
           </ul>
         </div>
 

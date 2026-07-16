@@ -117,34 +117,9 @@ const ParticleBackground = () => {
       }
     };
 
-    let currentOffsetX = 0;
-    let currentOffsetY = 0;
-
     // Animation Loop
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Smooth Parallax Grid
-      const gridSize = 50;
-      const targetOffsetX = mouse.x !== null ? (mouse.x - canvas.width / 2) * 0.05 : 0;
-      const targetOffsetY = mouse.y !== null ? (mouse.y - canvas.height / 2) * 0.05 : 0;
-
-      currentOffsetX += (targetOffsetX - currentOffsetX) * 0.05;
-      currentOffsetY += (targetOffsetY - currentOffsetY) * 0.05;
-
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
-      ctx.lineWidth = 1;
-
-      ctx.beginPath();
-      for (let x = (currentOffsetX % gridSize) - gridSize; x < canvas.width + gridSize; x += gridSize) {
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, canvas.height);
-      }
-      for (let y = (currentOffsetY % gridSize) - gridSize; y < canvas.height + gridSize; y += gridSize) {
-        ctx.moveTo(0, y);
-        ctx.lineTo(canvas.width, y);
-      }
-      ctx.stroke();
 
       for (let i = 0; i < particlesArray.length; i++) {
         particlesArray[i].update();
@@ -164,10 +139,20 @@ const ParticleBackground = () => {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 bg-[#050509]"
-    />
+    <div className="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 bg-[#050509]">
+      {/* Islamic Geometric Line Pattern */}
+      <div 
+        className="absolute inset-0 opacity-40 bg-repeat bg-center"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='0' y1='60' x2='120' y2='60' stroke='rgba(255, 255, 255, 0.012)' stroke-width='0.5' /%3E%3Cline x1='60' y1='0' x2='60' y2='120' stroke='rgba(255, 255, 255, 0.012)' stroke-width='0.5' /%3E%3Cline x1='0' y1='0' x2='120' y2='120' stroke='rgba(255, 255, 255, 0.012)' stroke-width='0.5' /%3E%3Cline x1='120' y1='0' x2='0' y2='120' stroke='rgba(255, 255, 255, 0.012)' stroke-width='0.5' /%3E%3Crect x='0.5' y='0.5' width='119' height='119' stroke='rgba(255, 255, 255, 0.012)' stroke-width='0.5' /%3E%3Cpolygon points='60,15 105,60 60,105 15,60' stroke='rgba(220, 38, 38, 0.025)' stroke-width='0.75' /%3E%3Crect x='37.5' y='37.5' width='45' height='45' stroke='rgba(220, 38, 38, 0.025)' stroke-width='0.75' /%3E%3Ccircle cx='60' cy='60' r='15' stroke='rgba(255, 255, 255, 0.012)' stroke-width='0.5' /%3E%3Ccircle cx='60' cy='60' r='30' stroke='rgba(255, 255, 255, 0.012)' stroke-width='0.5' /%3E%3Ccircle cx='0' cy='0' r='15' stroke='rgba(255, 255, 255, 0.012)' stroke-width='0.5' /%3E%3Ccircle cx='120' cy='0' r='15' stroke='rgba(255, 255, 255, 0.012)' stroke-width='0.5' /%3E%3Ccircle cx='0' cy='120' r='15' stroke='rgba(255, 255, 255, 0.012)' stroke-width='0.5' /%3E%3Ccircle cx='120' cy='120' r='15' stroke='rgba(255, 255, 255, 0.012)' stroke-width='0.5' /%3E%3C/svg%3E")`,
+          backgroundSize: '120px 120px',
+        }}
+      />
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full"
+      />
+    </div>
   );
 };
 
