@@ -31,53 +31,48 @@ function TypewriterText() {
   const [loopNum, setLoopNum] = useState(0);
 
   useEffect(() => {
-    const typingSpeed = 80;
-    const deletingSpeed = 40;
-    const delayBetween = 2500;
+    const typingSpeed = 100;
+    const deletingSpeed = 50;
+    const delayBetween = 2000;
 
     const i = loopNum % phrases.length;
-    // Strip trailing period for a cleaner command-line argument look
-    const wordToType = (phrases[i].highlight + ' ' + phrases[i].rest).replace(/\.$/, '');
+    const fullText = phrases[i].highlight + ' ' + phrases[i].rest;
 
     let timer: NodeJS.Timeout;
 
     if (isDeleting) {
       timer = setTimeout(() => {
-        setText(wordToType.substring(0, text.length - 1));
+        setText(fullText.substring(0, text.length - 1));
         if (text.length === 0) {
           setIsDeleting(false);
           setLoopNum(loopNum + 1);
         }
       }, deletingSpeed);
     } else {
-      if (text.length === wordToType.length) {
+      if (text.length === fullText.length) {
         timer = setTimeout(() => setIsDeleting(true), delayBetween);
       } else {
         timer = setTimeout(() => {
-          setText(wordToType.substring(0, text.length + 1));
+          setText(fullText.substring(0, text.length + 1));
         }, typingSpeed);
       }
     }
     return () => clearTimeout(timer);
   }, [text, isDeleting, loopNum, phrases]);
 
+  const words = text.split(' ');
+  const highlightWord = words[0] || '';
+  const restWords = words.slice(1).join(' ');
+  const hasSpace = text.includes(' ');
+
   return (
-    <div 
-      dir="ltr"
-      className="font-mono text-base sm:text-lg md:text-xl lg:text-2xl bg-black/45 border border-white/5 rounded-xl px-4 py-2 mt-4 inline-flex items-center gap-2 max-w-full overflow-x-auto whitespace-nowrap shadow-inner backdrop-blur-md select-none"
-    >
-      <span className="text-studio-red font-bold">$</span>
-      <span className="text-white/90">devesters</span>
-      <span className="text-studio-red font-semibold">build</span>
-      <span className="text-zinc-500">--for</span>
-      <span 
-        dir={locale === 'ar' ? 'rtl' : 'ltr'}
-        className="inline-block text-white bg-white/5 px-2 py-0.5 rounded border border-white/5 font-semibold tracking-wide"
-      >
-        {text}
-      </span>
-      <span className="animate-pulse text-studio-red font-sans font-black">█</span>
-    </div>
+    <span className="whitespace-normal sm:whitespace-nowrap text-center">
+      {dict.hero.typewriterPrefix}{' '}
+      <span className="text-studio-red italic font-mono">{highlightWord}</span>
+      {hasSpace ? ' ' : ''}
+      {restWords}
+      <span className="animate-pulse text-studio-red font-mono">|</span>
+    </span>
   );
 }
 
