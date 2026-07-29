@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, Briefcase, MessageSquare, Folders, LogOut, Settings, User, Trophy } from 'lucide-react';
+import { LayoutDashboard, Briefcase, MessageSquare, Folders, LogOut, Settings, User, Trophy, Share2 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 
@@ -29,6 +29,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { name: 'Projects', href: '/admin/projects', icon: Folders },
     { name: 'Testimonials', href: '/admin/testimonials', icon: MessageSquare },
     { name: 'Inquiries', href: '/admin/inquiries', icon: Briefcase },
+    { name: 'Social AI', href: '/admin/social-ai', icon: Share2 },
     { name: 'Settings', href: '/admin/settings', icon: Settings },
   ];
 

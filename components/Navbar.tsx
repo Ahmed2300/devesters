@@ -29,10 +29,10 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#050509]/80 backdrop-blur-lg border-b border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-        <Link href="/" className="flex flex-row items-center gap-0 z-50" style={{ direction: 'ltr', display: 'flex', flexDirection: 'row' }}>
-          <Image src="/devesters_icon.png" alt="Devesters Logo" width={24} height={24} className="rounded-sm" />
+    <header className="fixed top-4 left-0 right-0 z-50 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto pointer-events-none">
+      <div className="pointer-events-auto nav-container px-6 h-16 sm:h-18 flex items-center justify-between transition-all duration-300">
+        <Link href="/" className="flex items-center gap-0 z-50 shrink-0" style={{ direction: 'ltr' }}>
+          <Image src="/devesters_icon.png" alt="Devesters Logo" width={26} height={26} className="rounded-sm" />
           <span className="text-xl font-heading font-bold tracking-tight text-white -ml-0.5">EVesters</span>
         </Link>
 
@@ -45,14 +45,14 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 className={`relative text-sm font-medium transition-colors hover:text-white ${
-                  isActive ? 'text-white' : 'text-[#d4d4d8]'
+                  isActive ? 'text-white font-semibold' : 'text-[#d4d4d8]/80'
                 }`}
               >
                 {link.name}
                 {isActive && (
                   <motion.div
                     layoutId="navbar-active"
-                    className="absolute -bottom-1 left-0 right-0 h-[2px] bg-studio-red"
+                    className="absolute -bottom-1.5 left-0 right-0 h-[2px] bg-[#FF3B30] rounded-full"
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                   />
                 )}
@@ -61,21 +61,24 @@ export default function Navbar() {
           })}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-3">
           <button 
             onClick={toggleLocale}
-            className="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-zinc-400 hover:text-white border border-white/10 hover:border-white/20 rounded-md bg-white/5 transition-colors cursor-pointer"
+            className="secondary-btn inline-flex items-center justify-center h-9 px-3.5 text-xs font-semibold uppercase tracking-wider text-zinc-200 hover:text-white rounded-full leading-none cursor-pointer"
           >
             {locale === 'ar' ? 'EN' : 'العربية'}
           </button>
-          <Link href="/contact" className="inline-block px-5 py-2 text-sm font-medium text-white bg-transparent border border-studio-red rounded-full transition-colors hover:bg-studio-red cursor-pointer">
+          <Link 
+            href="/contact" 
+            className="primary-btn inline-flex items-center justify-center h-9 px-5 text-sm font-medium text-white rounded-full leading-none cursor-pointer"
+          >
             {dict.navbar.getInTouch}
           </Link>
         </div>
 
         {/* Mobile Menu Toggle */}
         <button 
-          className="lg:hidden z-50 p-2 text-white"
+          className="lg:hidden z-50 p-2 text-white hover:text-studio-red transition-colors cursor-pointer"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={isMobileMenuOpen}
@@ -88,12 +91,12 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-20 left-0 right-0 bg-[#050509] border-b border-white/5 shadow-2xl lg:hidden"
+            initial={{ opacity: 0, y: -10, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.98 }}
+            className="pointer-events-auto mt-3 nav-container p-6 lg:hidden flex flex-col gap-5 shadow-2xl"
           >
-            <div className="flex flex-col px-6 py-8 gap-6">
+            <div className="flex flex-col gap-4">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (
@@ -101,23 +104,29 @@ export default function Navbar() {
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`text-lg font-medium transition-colors ${
-                      isActive ? 'text-studio-red' : 'text-[#d4d4d8] hover:text-white'
+                    className={`text-base font-medium transition-colors ${
+                      isActive ? 'text-[#FF3B30] font-semibold' : 'text-[#d4d4d8] hover:text-white'
                     }`}
                   >
                     {link.name}
                   </Link>
                 );
               })}
-              <button 
-                onClick={() => { toggleLocale(); setIsMobileMenuOpen(false); }}
-                className="w-full px-5 py-3 text-sm font-medium text-center text-zinc-400 hover:text-white border border-white/10 rounded-full bg-white/5 transition-colors block cursor-pointer"
-              >
-                {locale === 'ar' ? 'English' : 'العربية'}
-              </button>
-              <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="px-5 py-3 text-sm font-medium w-full text-center text-white bg-studio-red rounded-full transition-colors block cursor-pointer">
-                {dict.navbar.getInTouch}
-              </Link>
+              <div className="pt-2 flex flex-col gap-3">
+                <button 
+                  onClick={() => { toggleLocale(); setIsMobileMenuOpen(false); }}
+                  className="secondary-btn w-full inline-flex items-center justify-center h-10 text-xs font-semibold uppercase tracking-wider text-zinc-200 hover:text-white rounded-full leading-none cursor-pointer"
+                >
+                  {locale === 'ar' ? 'English' : 'العربية'}
+                </button>
+                <Link 
+                  href="/contact" 
+                  onClick={() => setIsMobileMenuOpen(false)} 
+                  className="primary-btn w-full inline-flex items-center justify-center h-10 text-sm font-medium text-white rounded-full leading-none cursor-pointer text-center"
+                >
+                  {dict.navbar.getInTouch}
+                </Link>
+              </div>
             </div>
           </motion.div>
         )}

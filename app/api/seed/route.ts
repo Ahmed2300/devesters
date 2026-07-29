@@ -55,8 +55,8 @@ const PROJECTS = [
     featured: true,
     coverImage: true,
     covers: {
-      landscape: 'https://i.ibb.co/mrVK72YC/Screenshot-20260416-230419.png',
-      portrait: 'https://i.ibb.co/mVTk9mFC/Gemini-Generated-Image-ict7k1ict7k1ict7.png',
+      landscape: '/covers/soubul_landscape.jpg',
+      portrait: '/covers/soubul_portrait.jpg',
       square: 'https://i.ibb.co/Ldfp9LpY/Gemini-Generated-Image-xozhl7xozhl7xozh.png'
     },
     link: '/projects/soubul',
@@ -72,8 +72,8 @@ const PROJECTS = [
     featured: true,
     coverImage: true,
     covers: {
-      landscape: 'https://i.ibb.co/7tNm1JQM/Gemini-Generated-Image-eqan4veqan4veqan.png',
-      portrait: 'https://i.ibb.co/xtGX7VFm/Gemini-Generated-Image-bprpw7bprpw7bprp.png',
+      landscape: '/covers/naptah_landscape.jpg',
+      portrait: '/covers/naptah_portrait.jpg',
       square: 'https://i.ibb.co/LDKxt53p/Gemini-Generated-Image-e2upore2upore2up.png'
     },
     link: '/projects/naptah',
@@ -90,7 +90,7 @@ const PROJECTS = [
     coverImage: true,
     covers: {
       landscape: 'https://i.ibb.co/bMLtcwzH/Gemini-Generated-Image-zgxgxizgxgxizgxg.png',
-      portrait: 'https://i.ibb.co/G3s4xmBx/Gemini-Generated-Image-ksm9erksm9erksm9.png',
+      portrait: '/covers/blackwater_portrait.jpg',
       square: 'https://i.ibb.co/23DJRjbm/Gemini-Generated-Image-3kadtr3kadtr3kad.png'
     },
     link: '/projects/blackwater'
@@ -101,13 +101,13 @@ const PROJECTS = [
     category: 'Sports Platform',
     tech: ['Angular', 'JavaScript', 'Tailwind CSS'],
     icon: 'Activity',
-    customIcon: 'https://royal-prime-league.netlify.app/assets/images/logo2.png',
+    customIcon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23050509'/%3E%3Cpath d='M50 15 L80 35 L80 65 L50 85 L20 65 L20 35 Z' stroke='%23FF3B30' stroke-width='8' fill='none'/%3E%3Ctext x='50' y='57' font-family='system-ui, sans-serif' font-weight='900' font-size='36' fill='white' text-anchor='middle' dominant-baseline='middle'%3ER%3C/text%3E%3C/svg%3E",
     featured: true,
     coverImage: true,
     covers: {
-      landscape: 'https://i.ibb.co/Xf041W6v/Gemini-Generated-Image-xd050dxd050dxd05.png',
-      portrait: 'https://i.ibb.co/fY9yY80x/Gemini-Generated-Image-dxfudddxfudddxfu.png',
-      square: 'https://i.ibb.co/fY9yY80x/Gemini-Generated-Image-dxfudddxfudddxfu.png'
+      landscape: '/covers/royal_village_landscape.jpg',
+      portrait: '/covers/royal_village_portrait.jpg',
+      square: '/covers/royal_village_landscape.jpg'
     },
     link: '/projects/royal-village',
     previewUrl: 'https://royal-prime-league.netlify.app/'

@@ -237,16 +237,45 @@ export default function ProjectsClient({ initialProjects }: { initialProjects: a
                 <input type="text" value={formData.tech} onChange={e => setFormData({...formData, tech: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-studio-red transition-colors" placeholder="Next.js, Tailwind CSS, TypeScript" />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-zinc-400">Cover Image URL</label>
-                  <input type="text" value={formData.covers.landscape} onChange={e => setFormData({...formData, covers: { ...formData.covers, landscape: e.target.value, portrait: e.target.value, square: e.target.value }})} className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-studio-red transition-colors" />
+              <div className="space-y-3 pt-2">
+                <label className="text-sm font-bold text-white uppercase tracking-wider block">Project Covers (Multi Aspect-Ratios)</label>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                  <div className="space-y-1">
+                    <label className="text-xs font-medium text-zinc-400">Landscape Cover (16:9)</label>
+                    <input 
+                      type="text" 
+                      placeholder="https://... (1200×675px)" 
+                      value={formData.covers.landscape} 
+                      onChange={e => setFormData({...formData, covers: { ...formData.covers, landscape: e.target.value }})} 
+                      className="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-studio-red transition-colors" 
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-xs font-medium text-zinc-400">Portrait Cover (3:4 / 9:16)</label>
+                    <input 
+                      type="text" 
+                      placeholder="https://... (800×1066px)" 
+                      value={formData.covers.portrait} 
+                      onChange={e => setFormData({...formData, covers: { ...formData.covers, portrait: e.target.value }})} 
+                      className="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-studio-red transition-colors" 
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-xs font-medium text-zinc-400">Square Cover (1:1)</label>
+                    <input 
+                      type="text" 
+                      placeholder="https://... (800×800px)" 
+                      value={formData.covers.square} 
+                      onChange={e => setFormData({...formData, covers: { ...formData.covers, square: e.target.value }})} 
+                      className="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-studio-red transition-colors" 
+                    />
+                  </div>
                 </div>
-                
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-zinc-400">Custom Icon URL</label>
-                  <input type="text" value={formData.custom_icon} onChange={e => setFormData({...formData, custom_icon: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-studio-red transition-colors" />
-                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-zinc-400">Custom Icon URL (SVG / PNG)</label>
+                <input type="text" value={formData.custom_icon} onChange={e => setFormData({...formData, custom_icon: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-studio-red transition-colors" placeholder="https://..." />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

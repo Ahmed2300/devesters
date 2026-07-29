@@ -118,6 +118,15 @@ export default function ProjectsClient({ projectsData }: { projectsData: Default
                 spanClass = "col-span-1 lg:col-span-2 md:col-span-2";
               }
 
+              const isTall = spanClass.includes('row-span-2');
+              const isWide = spanClass.includes('col-span-2');
+
+              const imageUrl = isTall
+                ? (project.covers?.portrait || project.covers?.square || project.covers?.landscape || (typeof project.cover_image === 'string' ? project.cover_image : undefined) || (typeof project.coverImage === 'string' ? project.coverImage : undefined))
+                : (isWide
+                    ? (project.covers?.landscape || project.covers?.square || project.covers?.portrait || (typeof project.cover_image === 'string' ? project.cover_image : undefined) || (typeof project.coverImage === 'string' ? project.coverImage : undefined))
+                    : (project.covers?.square || project.covers?.landscape || project.covers?.portrait || (typeof project.cover_image === 'string' ? project.cover_image : undefined) || (typeof project.coverImage === 'string' ? project.coverImage : undefined)));
+
               const isUrl = (s?: string) => s && (s.startsWith('http') || s.startsWith('/'));
               const bentoProject: IBentoProject = {
                 id: String(project.id),
@@ -126,7 +135,8 @@ export default function ProjectsClient({ projectsData }: { projectsData: Default
                 description: project.description,
                 techStack: project.tech || [],
                 gridSpan: spanClass,
-                imageUrl: project.covers?.landscape || project.covers?.square || project.covers?.portrait || (typeof project.cover_image === 'string' ? project.cover_image : undefined) || (typeof project.coverImage === 'string' ? project.coverImage : undefined),
+                imageUrl,
+                covers: project.covers,
                 iconUrl: (typeof project.customIcon === 'string' && isUrl(project.customIcon)) ? project.customIcon : ((typeof project.icon === 'string' && isUrl(project.icon)) ? project.icon : undefined),
                 actionLink: project.previewUrl || project.preview_url || project.github_url || project.link || '#',
               };

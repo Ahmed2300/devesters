@@ -16,7 +16,7 @@ export default function ServicesSection() {
         
         {/* Header content */}
         <div className="flex flex-col items-center text-center space-y-4 mb-16">
-          <div className="px-3 py-1 rounded-full border border-[#FF1C1C]/20 bg-[#FF1C1C]/10 text-[#FF1C1C] text-[11px] font-bold uppercase tracking-[0.12em]">
+          <div className="status-pill inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider">
             {dict.servicesSection.badge}
           </div>
           <h2 className="text-4xl md:text-5xl font-heading font-bold">
@@ -31,7 +31,7 @@ export default function ServicesSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch mb-12">
           
           {/* Card 1: Web Development */}
-          <Link href="/services/web-development" className="group rounded-[16px] bg-white/[0.04] border border-white/[0.09] backdrop-blur-md overflow-hidden transition-all duration-200 ease-in-out hover:-translate-y-1 hover:border-[#FF1C1C]/35 cursor-pointer flex flex-col">
+          <Link href="/services/web-development" className="group rounded-[16px] bg-white/[0.04] border border-white/[0.09] backdrop-blur-md overflow-hidden transition-all duration-200 ease-in-out hover:-translate-y-1 hover:border-[#FF3B30]/40 cursor-pointer flex flex-col">
             <div className="relative h-[180px] md:h-[220px] bg-gradient-to-br from-indigo-900/20 to-[#09090b] rounded-t-[12px] group-hover:brightness-105 transition-all overflow-hidden flex items-center justify-center">
               <div className={`absolute top-3 ${locale === 'ar' ? 'right-3' : 'left-3'} bg-black/60 rounded-[6px] px-2 py-1 text-white text-[12px] font-medium z-10 backdrop-blur-sm`}>
                 {locale === 'ar' ? 'تطوير الويب' : 'Web Development'}
@@ -54,14 +54,14 @@ export default function ServicesSection() {
                   {dict.servicesSection.webDesc}
                 </p>
               </div>
-              <div className="inline-flex w-fit items-center gap-1.5 bg-[#E50000] text-white px-5 py-3 rounded-lg text-[13px] font-medium transition-all group-hover:opacity-90 group-hover:-translate-y-px mt-auto">
-                {dict.servicesSection.explore} <ArrowRight className={`w-4 h-4 ${locale === 'ar' ? 'rotate-180' : ''}`} />
+              <div className="primary-btn inline-flex w-fit items-center gap-1.5 text-white px-5 py-2.5 rounded-full text-xs font-medium transition-all group-hover:opacity-90 mt-auto">
+                {dict.servicesSection.explore} <ArrowRight className={`w-3.5 h-3.5 ${locale === 'ar' ? 'rotate-180' : ''}`} />
               </div>
             </div>
           </Link>
 
           {/* Card 2: Mobile Apps */}
-          <Link href="/services/mobile-development" className="group rounded-[16px] bg-white/[0.04] border border-white/[0.09] backdrop-blur-md overflow-hidden transition-all duration-200 ease-in-out hover:-translate-y-1 hover:border-[#FF1C1C]/35 cursor-pointer lg:h-[calc(100%+20px)] lg:-mt-[10px] flex flex-col relative z-10 shadow-2xl">
+          <Link href="/services/mobile-development" className="group rounded-[16px] bg-white/[0.04] border border-white/[0.09] backdrop-blur-md overflow-hidden transition-all duration-200 ease-in-out hover:-translate-y-1 hover:border-[#FF3B30]/40 cursor-pointer lg:h-[calc(100%+20px)] lg:-mt-[10px] flex flex-col relative z-10 shadow-2xl">
             <div className="relative h-[180px] lg:h-[240px] bg-emerald-500/[0.06] rounded-t-[12px] group-hover:brightness-105 transition-all overflow-hidden flex items-center justify-center">
               <div className={`absolute top-3 ${locale === 'ar' ? 'right-3' : 'left-3'} bg-black/60 rounded-[6px] px-2 py-1 text-white text-[12px] font-medium z-10 backdrop-blur-sm`}>
                 {locale === 'ar' ? 'تطبيقات الجوال' : 'Mobile App Development'}
@@ -83,14 +83,14 @@ export default function ServicesSection() {
                   {dict.servicesSection.mobileDesc}
                 </p>
               </div>
-              <div className="inline-flex w-fit items-center gap-1.5 bg-[#E50000] text-white px-5 py-3 rounded-lg text-[13px] font-medium transition-all group-hover:opacity-90 group-hover:-translate-y-px mt-auto">
-                {dict.servicesSection.explore} <ArrowRight className={`w-4 h-4 ${locale === 'ar' ? 'rotate-180' : ''}`} />
+              <div className="primary-btn inline-flex w-fit items-center gap-1.5 text-white px-5 py-2.5 rounded-full text-xs font-medium transition-all group-hover:opacity-90 mt-auto">
+                {dict.servicesSection.explore} <ArrowRight className={`w-3.5 h-3.5 ${locale === 'ar' ? 'rotate-180' : ''}`} />
               </div>
             </div>
           </Link>
 
           {/* Card 3: AI Integration */}
-          <Link href="/services/ai-integration" className="group rounded-[16px] bg-white/[0.04] border border-white/[0.09] backdrop-blur-md overflow-hidden transition-all duration-200 ease-in-out hover:-translate-y-1 hover:border-[#FF1C1C]/35 cursor-pointer lg:col-span-1 md:col-span-2 col-span-1 flex flex-col">
+          <Link href="/services/ai-integration" className="group rounded-[16px] bg-white/[0.04] border border-white/[0.09] backdrop-blur-md overflow-hidden transition-all duration-200 ease-in-out hover:-translate-y-1 hover:border-[#FF3B30]/40 cursor-pointer lg:col-span-1 md:col-span-2 col-span-1 flex flex-col">
             <div className="relative h-[180px] md:h-[220px] bg-violet-500/[0.08] rounded-t-[12px] group-hover:brightness-105 transition-all overflow-hidden flex items-center justify-center">
               <div className={`absolute top-3 ${locale === 'ar' ? 'right-3' : 'left-3'} bg-black/60 rounded-[6px] px-2 py-1 text-white text-[12px] font-medium z-10 backdrop-blur-sm`}>
                 {locale === 'ar' ? 'الذكاء الاصطناعي' : 'AI Integration'}
@@ -112,8 +112,8 @@ export default function ServicesSection() {
                   {dict.servicesSection.aiDesc}
                 </p>
               </div>
-              <div className="inline-flex w-fit items-center gap-1.5 bg-[#E50000] text-white px-5 py-3 rounded-lg text-[13px] font-medium transition-all group-hover:opacity-90 group-hover:-translate-y-px mt-auto">
-                {dict.servicesSection.explore} <ArrowRight className={`w-4 h-4 ${locale === 'ar' ? 'rotate-180' : ''}`} />
+              <div className="primary-btn inline-flex w-fit items-center gap-1.5 text-white px-5 py-2.5 rounded-full text-xs font-medium transition-all group-hover:opacity-90 mt-auto">
+                {dict.servicesSection.explore} <ArrowRight className={`w-3.5 h-3.5 ${locale === 'ar' ? 'rotate-180' : ''}`} />
               </div>
             </div>
           </Link>

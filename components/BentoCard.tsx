@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -15,6 +16,11 @@ export interface IBentoProject {
   techStack: string[];
   gridSpan: string;
   imageUrl?: string;
+  covers?: {
+    landscape?: string;
+    portrait?: string;
+    square?: string;
+  };
   iconUrl?: string;
   actionLink: string;
 }
@@ -22,9 +28,12 @@ export interface IBentoProject {
 export default function BentoCard({ project }: { project: IBentoProject }) {
   const { locale } = useLanguage();
   const dict = getDictionary(locale);
+  const [iconError, setIconError] = useState(false);
 
   const isExternal = project.actionLink.startsWith('http') || project.actionLink.includes('.') || project.actionLink.startsWith('//');
   const CardWrapper = isExternal ? 'a' : Link;
+
+  const isTallCard = project.gridSpan.includes('row-span-2');
 
   return (
     <CardWrapper 
@@ -34,17 +43,27 @@ export default function BentoCard({ project }: { project: IBentoProject }) {
     >
       <motion.div
         whileHover={{ scale: 1.02 }}
-        className="bg-glass rounded-2xl p-6 relative overflow-hidden transition-all duration-300 ease-out hover:bg-white/10 hover:border-studio-red/30 h-full w-full"
+        className="bg-glass rounded-2xl p-6 relative overflow-hidden transition-all duration-300 ease-out hover:bg-white/10 hover:border-studio-red/30 h-full w-full flex flex-col"
       >
         {/* Inner gradient for extra depth */}
         <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
         
         {/* Content */}
-        <div className="relative z-10 flex flex-col h-full">
+        <div className="relative z-10 flex flex-col h-full flex-grow">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-3 sm:gap-0">
             <div className="flex items-center gap-3">
-              {project.iconUrl && (
-                <Image src={project.iconUrl} alt={`${project.title} icon`} width={32} height={32} className="rounded-md object-contain" referrerPolicy="no-referrer" />
+              {project.iconUrl && !iconError && (
+                <div className="w-8 h-8 rounded-lg overflow-hidden shrink-0 relative bg-white/5 border border-white/10 flex items-center justify-center p-1">
+                  <Image 
+                    src={project.iconUrl} 
+                    alt="" 
+                    width={32} 
+                    height={32} 
+                    className="w-full h-full object-contain" 
+                    referrerPolicy="no-referrer"
+                    onError={() => setIconError(true)}
+                  />
+                </div>
               )}
               <h3 className="text-2xl font-heading font-bold text-white">{project.title}</h3>
             </div>
@@ -66,12 +85,16 @@ export default function BentoCard({ project }: { project: IBentoProject }) {
           </div>
 
           {project.imageUrl && (
-            <div className="relative w-full flex-grow min-h-[200px] mt-auto rounded-xl overflow-hidden border border-white/5">
+            <div className={`relative w-full flex-grow mt-auto rounded-xl overflow-hidden border border-white/5 ${
+              isTallCard ? 'min-h-[340px] sm:min-h-[420px]' : 'min-h-[200px]'
+            }`}>
               <Image
                 src={project.imageUrl}
                 alt={project.title}
                 fill
-                className="object-cover opacity-80 group-hover:opacity-100 transition-transform duration-500 group-hover:scale-105"
+                className={`opacity-85 group-hover:opacity-100 transition-transform duration-500 group-hover:scale-105 ${
+                  isTallCard ? 'object-cover object-top' : 'object-cover object-center'
+                }`}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 referrerPolicy="no-referrer"
               />

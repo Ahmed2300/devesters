@@ -19,9 +19,8 @@ class Particle {
     this.baseX = x;
     this.baseY = y;
     this.size = Math.random() * 2 + 1; // Size between 1px and 3px
-    this.density = (Math.random() * 30) + 1; // Weight of the particle
-    // Mix of Studio Red and Soft Aqua with low opacity
-    this.color = Math.random() > 0.8 ? 'rgba(56, 189, 248, 0.5)' : 'rgba(220, 38, 38, 0.4)'; 
+    this.density = (Math.random() * 25) + 5; // Weight of the particle
+    this.color = Math.random() > 0.85 ? 'rgba(56, 189, 248, 0.6)' : 'rgba(255, 59, 48, 0.5)'; 
     this.ctx = ctx;
     this.mouse = mouse;
   }
@@ -37,31 +36,28 @@ class Particle {
 
   update() {
     if (this.mouse.x !== null && this.mouse.y !== null) {
-      // Calculate distance between mouse and particle
       let dx = this.mouse.x - this.x;
       let dy = this.mouse.y - this.y;
       let distance = Math.sqrt(dx * dx + dy * dy);
       
-      // Antigravity repulse logic
-      let forceDirectionX = dx / distance;
-      let forceDirectionY = dy / distance;
-      let maxDistance = this.mouse.radius;
-      let force = (maxDistance - distance) / maxDistance;
-      let directionX = forceDirectionX * force * this.density;
-      let directionY = forceDirectionY * force * this.density;
-
       if (distance < this.mouse.radius) {
+        let forceDirectionX = dx / distance;
+        let forceDirectionY = dy / distance;
+        let maxDistance = this.mouse.radius;
+        let force = (maxDistance - distance) / maxDistance;
+        let directionX = forceDirectionX * force * this.density;
+        let directionY = forceDirectionY * force * this.density;
+
         this.x -= directionX;
         this.y -= directionY;
       } else {
-        // Return to original position smoothly
         if (this.x !== this.baseX) {
           let dx = this.x - this.baseX;
-          this.x -= dx / 20;
+          this.x -= dx / 15;
         }
         if (this.y !== this.baseY) {
           let dy = this.y - this.baseY;
-          this.y -= dy / 20;
+          this.y -= dy / 15;
         }
       }
     }
@@ -81,35 +77,38 @@ const ParticleBackground = () => {
     let particlesArray: Particle[] = [];
     let animationFrameId: number;
     
-    // Set Canvas to Full Screen
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    // Mouse position tracker
-    let mouse = {
-      x: null as number | null,
-      y: null as number | null,
-      radius: 120 // How close the mouse needs to be to repel particles
-    };
-
-    const handleMouseMove = (event: MouseEvent) => {
-      mouse.x = event.x;
-      mouse.y = event.y;
-    };
-
     const handleResize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       init();
     };
 
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let mouse = {
+      x: null as number | null,
+      y: null as number | null,
+      radius: 140
+    };
+
+    const handleMouseMove = (event: MouseEvent) => {
+      mouse.x = event.clientX;
+      mouse.y = event.clientY;
+    };
+
+    const handleMouseLeave = () => {
+      mouse.x = null;
+      mouse.y = null;
+    };
+
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseleave', handleMouseLeave);
     window.addEventListener('resize', handleResize);
 
-    // Initialize Particle Field
     const init = () => {
       particlesArray = [];
-      const numberOfParticles = (canvas.width * canvas.height) / 20000; // Adjust density here
+      const numberOfParticles = Math.floor((canvas.width * canvas.height) / 18000);
       for (let i = 0; i < numberOfParticles; i++) {
         let x = Math.random() * canvas.width;
         let y = Math.random() * canvas.height;
@@ -120,19 +119,33 @@ const ParticleBackground = () => {
     let currentOffsetX = 0;
     let currentOffsetY = 0;
 
-    // Animation Loop
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Smooth Parallax Grid
-      const gridSize = 50;
-      const targetOffsetX = mouse.x !== null ? (mouse.x - canvas.width / 2) * 0.05 : 0;
-      const targetOffsetY = mouse.y !== null ? (mouse.y - canvas.height / 2) * 0.05 : 0;
+      // Smooth Mouse Parallax for Grid
+      const gridSize = 48;
+      const targetOffsetX = mouse.x !== null ? (mouse.x - canvas.width / 2) * 0.04 : 0;
+      const targetOffsetY = mouse.y !== null ? (mouse.y - canvas.height / 2) * 0.04 : 0;
 
-      currentOffsetX += (targetOffsetX - currentOffsetX) * 0.05;
-      currentOffsetY += (targetOffsetY - currentOffsetY) * 0.05;
+      currentOffsetX += (targetOffsetX - currentOffsetX) * 0.06;
+      currentOffsetY += (targetOffsetY - currentOffsetY) * 0.06;
 
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+      // Draw Cursor Radial Glow on Grid
+      if (mouse.x !== null && mouse.y !== null) {
+        const glow = ctx.createRadialGradient(
+          mouse.x, mouse.y, 0,
+          mouse.x, mouse.y, 320
+        );
+        glow.addColorStop(0, 'rgba(255, 59, 48, 0.09)');
+        glow.addColorStop(0.5, 'rgba(56, 189, 248, 0.03)');
+        glow.addColorStop(1, 'transparent');
+
+        ctx.fillStyle = glow;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+
+      // Draw Interactive Grid Lines
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.035)';
       ctx.lineWidth = 1;
 
       ctx.beginPath();
@@ -146,18 +159,20 @@ const ParticleBackground = () => {
       }
       ctx.stroke();
 
+      // Update & Render Micro-Particles
       for (let i = 0; i < particlesArray.length; i++) {
         particlesArray[i].update();
       }
+
       animationFrameId = requestAnimationFrame(animate);
     };
 
     init();
     animate();
 
-    // Cleanup
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseleave', handleMouseLeave);
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationFrameId);
     };

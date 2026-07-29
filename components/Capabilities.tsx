@@ -30,7 +30,9 @@ export default function Capabilities() {
   return (
     <section className="max-w-7xl mx-auto px-6 py-24 border-t border-white/5">
       <div className="text-center mb-16">
-        <h3 className="text-xs font-bold tracking-widest text-studio-red uppercase mb-4">{dict.capabilities.badge}</h3>
+        <div className="status-pill inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-4">
+          {dict.capabilities.badge}
+        </div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-white tracking-tight">{dict.capabilities.title}</h2>
       </div>
 

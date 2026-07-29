@@ -86,10 +86,10 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-studio-red/15 via-transparent to-transparent -z-10" />
 
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 text-center">
-        <div
-          className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-wider text-studio-red uppercase border border-studio-red/20 rounded-full bg-studio-red/5"
-        >
-          {dict.hero.badge}
+        <div className="inline-block">
+          <span className="status-pill inline-flex items-center px-4 py-1.5 mb-6 text-xs font-semibold tracking-wider uppercase rounded-full">
+            {dict.hero.badge}
+          </span>
         </div>
 
         <h1
@@ -106,20 +106,19 @@ export default function Hero() {
         </p>
 
         <div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
+          className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-6 w-full sm:w-auto"
         >
           <Link
             href="/contact"
-            className="inline-block px-8 py-3.5 text-sm font-medium text-center text-white bg-studio-red rounded-full shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:shadow-[0_0_30px_rgba(220,38,38,0.6)] hover:scale-[1.03] active:scale-[0.98] transition-all w-full sm:w-auto"
+            className="primary-btn inline-flex items-center justify-center px-8 py-3.5 text-sm font-medium text-white rounded-full w-full sm:w-auto cursor-pointer"
           >
             {dict.hero.contactBtn}
           </Link>
           <Link 
             href="/projects" 
-            className="inline-block px-8 py-3.5 text-sm font-medium text-center text-white bg-transparent rounded-full border border-white/10 hover:border-white/30 transition-colors w-full sm:w-auto group relative overflow-hidden"
+            className="secondary-btn inline-flex items-center justify-center px-8 py-3.5 text-sm font-medium text-white rounded-full w-full sm:w-auto cursor-pointer"
           >
-            <span className="relative z-10">{dict.hero.projectsBtn}</span>
-            <span className="absolute bottom-0 left-0 w-full h-[1px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+            {dict.hero.projectsBtn}
           </Link>
         </div>
 
@@ -140,12 +139,15 @@ export default function Hero() {
               ease: "linear",
               duration: 50,
             }}
-            className="flex w-max gap-12 sm:gap-24 text-xs font-bold tracking-widest text-[#d4d4d8]/50 uppercase"
+            className="flex w-max gap-12 sm:gap-24 text-xs font-bold tracking-widest uppercase"
           >
             {[...techStack, ...techStack, ...techStack, ...techStack].map((tech, i) => (
-              <span key={i} className="flex items-center gap-2">
-                <tech.icon className="w-4 h-4" />
-                {tech.name}
+              <span 
+                key={i} 
+                className="flex items-center gap-2.5 opacity-50 hover:opacity-100 transition-all duration-200 text-zinc-300 hover:text-white cursor-pointer group"
+              >
+                <tech.icon className="w-4 h-4 text-white fill-current group-hover:scale-110 transition-transform" />
+                <span>{tech.name}</span>
               </span>
             ))}
           </motion.div>
