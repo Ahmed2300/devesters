@@ -15,7 +15,7 @@ export default function Navbar() {
   const { locale, toggleLocale } = useLanguage();
   const dict = getDictionary(locale);
 
-  if (pathname.startsWith('/admin')) {
+  if (pathname.startsWith('/admin') || pathname.startsWith('/posat')) {
     return null;
   }
 
